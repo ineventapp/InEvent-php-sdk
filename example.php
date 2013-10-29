@@ -20,13 +20,13 @@ require_once('InEvent/InEvent.php');
 		$inevent = new InEventActivity();
 	
 	2. Call a method
-		echo $inevent->getEvents();
+		echo json_encode($inevent->getEvents());
 
 	3. Drink some beer!
 
 	P.S.
 	If you are on PHP 5.4 and over, you can directly call a method
-		echo (new InEventEvent())->getEvents();
+		echo json_encode((new InEventEvent())->getEvents());
 
  */
 
