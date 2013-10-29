@@ -110,7 +110,7 @@ class InEvent {
 		$this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
 
 		curl_close($ci);
-		return $response;
+		return json_decode($response, true);
 	}
 
 	/**
