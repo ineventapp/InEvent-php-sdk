@@ -37,7 +37,7 @@ $inevent->signIn($email, $password);
 $inevent = new InEventEvent();
 echo json_encode($inevent->getEvents());
 
-// PHP 5.4 and below
+// PHP 5.4 and over
 echo json_encode((new InEventEvent())->getEvents());
 
 ?>

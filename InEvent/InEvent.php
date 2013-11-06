@@ -10,12 +10,14 @@
 require_once('InEventToken.php');
 
 // Include all our modules
-require_once('modules/activity.php');
-require_once('modules/ad.php');
-require_once('modules/event.php');
-require_once('modules/group.php');
-require_once('modules/person.php');
-require_once('modules/photo.php');
+require_once('InEventActivity.php');
+require_once('InEventAd.php');
+require_once('InEventApp.php');
+require_once('InEventContest.php');
+require_once('InEventEvent.php');
+require_once('InEventGroup.php');
+require_once('InEventPerson.php');
+require_once('InEventPhoto.php');
 
 /**
 * InEvent class
