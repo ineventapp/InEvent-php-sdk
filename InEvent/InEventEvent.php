@@ -22,8 +22,8 @@ class InEventEvent extends InEvent {
 		return $this->getJSONObject("event", "requestEnrollment", $attributes);
 	}
 
-	public function requestEnrollmentForPerson($personID, $eventID) {
-		$attributes = array("GET" => array("personID" => $personID, "eventID" => $eventID));
+	public function requestEnrollmentForPerson($name, $email, $eventID) {
+		$attributes = array("GET" => array("name" => $name, "email" => $email, "eventID" => $eventID));
 		return $this->getJSONObject("event", "requestEnrollment", $attributes);
 	}
 

@@ -3,9 +3,9 @@ class InEventApp extends InEvent {
 
 	public function signIn($appID, $appSecret, $personID) {
 
-		$cryptedMessage = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $appSecret, json_encode(array("personID" => $personID)), MCRYPT_MODE_ECB));
+		$cryptMessage = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $appSecret, json_encode(array("personID" => $personID)), MCRYPT_MODE_ECB));
 
-		$attributes = array("GET" => array("appID" => $appID, "cryptedMessage" => $cryptedMessage));
+		$attributes = array("GET" => array("appID" => $appID, "cryptMessage" => $cryptMessage));
 
 		$json = $this->getJSONObject("app", "signIn", $attributes);
 		$this->token->tokenID = $json["tokenID"];
