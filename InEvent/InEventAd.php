@@ -2,9 +2,9 @@
 
 class InEventAd extends InEvent {
 
-	public function getAds($eventID) {
+	public function getAll($eventID) {
 		$attributes = array("GET" => array("eventID" => $eventID));
-		return $this->getJSONObject("ad", "getAds", $attributes);
+		return $this->getJSONObject("ad", "getAll", $attributes);
 	}
 
 	public function seenAd($adID) {

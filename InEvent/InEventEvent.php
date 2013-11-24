@@ -2,6 +2,11 @@
 
 class InEventEvent extends InEvent {
 
+	public function create($name, $nickname) {
+		$attributes = array("GET" => array(), "POST" => array("name" => $name, "nickname" => $nickname));
+		return $this->getJSONObject("event", "create", $attributes);
+	}
+
 	public function edit($name, $value, $eventID) {
 		$attributes = array("GET" => array("name" => $name, "eventID" => $eventID), "POST" => array("value" => $value));
 		return $this->getJSONObject("event", "edit", $attributes);
@@ -67,6 +72,11 @@ class InEventEvent extends InEvent {
 		return $this->getJSONObject("event", "getActivities", $attributes);
 	}
 
+	public function getGroups($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
+		return $this->getJSONObject("event", "getGroups", $attributes);
+	}
+
 	public function getOpinion($eventID) {
 		$attributes = array("GET" => array("eventID" => $eventID));
 		return $this->getJSONObject("event", "getOpinion", $attributes);
@@ -74,11 +84,6 @@ class InEventEvent extends InEvent {
 
 	public function sendOpinion($eventID, $message, $rating) {
 		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("message" => $message, "rating" => $rating));
-		return $this->getJSONObject("event", "getGroups", $attributes);
-	}
-
-	public function getGroups($eventID) {
-		$attributes = array("GET" => array("eventID" => $eventID));
 		return $this->getJSONObject("event", "getGroups", $attributes);
 	}
 

@@ -7,9 +7,9 @@ class InEventPhoto extends InEvent {
 		return $this->getJSONObject("photo", "post", $attributes);
 	}
 
-	public function getPhotos($eventID, $url) {
+	public function getAll($eventID, $url) {
 		$attributes = array("GET" => array("eventID" => $eventID));
-		return $this->getJSONObject("photo", "getPhotos", $attributes);
+		return $this->getJSONObject("photo", "getAll", $attributes);
 	}
 
 	public function getSingle($photoID) {

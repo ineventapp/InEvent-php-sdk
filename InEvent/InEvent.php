@@ -16,6 +16,8 @@ require_once('InEventApp.php');
 require_once('InEventContest.php');
 require_once('InEventEvent.php');
 require_once('InEventGroup.php');
+require_once('InEventMaterial.php');
+require_once('InEventPayment.php');
 require_once('InEventPerson.php');
 require_once('InEventPhoto.php');
 
