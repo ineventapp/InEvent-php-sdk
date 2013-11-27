@@ -17,9 +17,9 @@ class InEventPayment extends InEvent {
 		return $this->getJSONObject("payment", "requestAddress", $attributes);
 	}
 
-	public function confirmPayment($eventID, $collection_id) {
+	public function provideConfirmation($eventID, $collection_id) {
 		$attributes = array("GET" => array("eventID" => $eventID, "collection_id" => $collection_id));
-		return $this->getJSONObject("payment", "confirmPayment", $attributes);
+		return $this->getJSONObject("payment", "provideConfirmation", $attributes);
 	}
 }
 

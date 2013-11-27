@@ -57,6 +57,21 @@ class InEventActivity extends InEvent {
 		return $this->getJSONObject("activity", "getPeople", $attributes);
 	}
 
+	public function sendMaterial($activityID, $url) {
+		$attributes = array("GET" => array("activityID" => $activityID), "POST" => array("url" => $url));
+		return $this->getJSONObject("activity", "sendMaterial", $attributes);
+	}
+
+	public function getMaterials($activityID, $url) {
+		$attributes = array("GET" => array("activityID" => $activityID));
+		return $this->getJSONObject("activity", "getMaterials", $attributes);
+	}
+
+	public function removeMaterial($materialID) {
+		$attributes = array("GET" => array("materialID" => $materialID));
+		return $this->getJSONObject("activity", "removeMaterial", $attributes);
+	}
+
 	public function getQuestions($activityID, $selection) {
 		$attributes = array("GET" => array("activityID" => $activityID, "selection" => $selection));
 		return $this->getJSONObject("activity", "getQuestions", $attributes);
