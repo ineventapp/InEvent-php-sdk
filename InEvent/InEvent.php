@@ -109,7 +109,7 @@ class InEvent {
 
 		// Curl response 
 		$response = curl_exec($ci);
-		$this->http_code = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+		$this->httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
 		$this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
 
 		curl_close($ci);
