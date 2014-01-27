@@ -7,8 +7,8 @@ class InEventActivity extends InEvent {
         return $this->getJSONObject("activity", "create", $attributes);
 	}
 
-	public function edit($name, $value, $activityID) {
-		$attributes = array("GET" => array("name" => $name, "activityID" => $activityID), "POST" => array("value" => $value));
+	public function edit($key, $value, $activityID) {
+		$attributes = array("GET" => array("key" => $key, "activityID" => $activityID), "POST" => array("value" => $value));
 		return $this->getJSONObject("activity", "create", $attributes);
 	}
 
@@ -17,24 +17,34 @@ class InEventActivity extends InEvent {
 		return $this->getJSONObject("activity", "remove", $attributes);
 	}
 
-	public function requestEnrollment($activityID) {
+	public function enrollPerson($activityID) {
 		$attributes = array("GET" => array("activityID" => $activityID));
-		return $this->getJSONObject("activity", "requestEnrollment", $attributes);
+		return $this->getJSONObject("activity", "enrollPerson", $attributes);
 	}
 
-	public function requestEnrollmentForPerson($name, $email, $activityID) {
+	public function enrollPersonForEmail($name, $email, $activityID) {
 		$attributes = array("GET" => array("name" => $name, "email" => $email, "activityID" => $activityID));
-		return $this->getJSONObject("activity", "requestEnrollment", $attributes);
+		return $this->getJSONObject("activity", "enrollPerson", $attributes);
 	}
 
-	public function dismissEnrollment($activityID) {
+	public function dismissPerson($activityID) {
 		$attributes = array("GET" => array("activityID" => $activityID));
-		return $this->getJSONObject("activity", "dismissEnrollment", $attributes);
+		return $this->getJSONObject("activity", "dismissPerson", $attributes);
 	}
 
-	public function dismissEnrollmentForPerson($personID, $activityID) {
+	public function dismissPersonForEmail($personID, $activityID) {
 		$attributes = array("GET" => array("personID" => $personID, "activityID" => $activityID));
-		return $this->getJSONObject("activity", "dismissEnrollment", $attributes);
+		return $this->getJSONObject("activity", "dismissPerson", $attributes);
+	}
+
+	public function confirmApproval($personID, $activityID) {
+		$attributes = array("GET" => array("personID" => $personID, "activityID" => $activityID));
+		return $this->getJSONObject("activity", "confirmApproval", $attributes);
+	}
+
+	public function revokeApproval($personID, $activityID) {
+		$attributes = array("GET" => array("personID" => $personID, "activityID" => $activityID));
+		return $this->getJSONObject("activity", "revokeApproval", $attributes);
 	}
 
 	public function confirmEntrance($personID, $activityID) {
@@ -50,6 +60,21 @@ class InEventActivity extends InEvent {
 	public function confirmPayment($personID, $activityID) {
 		$attributes = array("GET" => array("personID" => $personID, "activityID" => $activityID));
 		return $this->getJSONObject("activity", "confirmPayment", $attributes);
+	}
+
+	public function revokePayment($personID, $activityID) {
+		$attributes = array("GET" => array("personID" => $personID, "activityID" => $activityID));
+		return $this->getJSONObject("activity", "revokePayment", $attributes);
+	}
+
+	public function risePriority($activityID) {
+		$attributes = array("GET" => array("activityID" => $activityID));
+		return $this->getJSONObject("activity", "risePriority", $attributes);
+	}
+
+	public function decreasePriority($activityID) {
+		$attributes = array("GET" => array("activityID" => $activityID));
+		return $this->getJSONObject("activity", "decreasePriority", $attributes);
 	}
 
 	public function getPeople($personID, $activityID, $selection) {

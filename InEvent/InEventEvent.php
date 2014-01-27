@@ -7,8 +7,8 @@ class InEventEvent extends InEvent {
 		return $this->getJSONObject("event", "create", $attributes);
 	}
 
-	public function edit($name, $value, $eventID) {
-		$attributes = array("GET" => array("name" => $name, "eventID" => $eventID), "POST" => array("value" => $value));
+	public function edit($key, $value, $eventID) {
+		$attributes = array("GET" => array("key" => $key, "eventID" => $eventID), "POST" => array("value" => $value));
 		return $this->getJSONObject("event", "edit", $attributes);
 	}
 

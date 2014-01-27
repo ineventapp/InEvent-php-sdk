@@ -19,8 +19,8 @@ require_once('InEvent/InEvent.php');
 
 		OR
 
-		$inevent = new InEventApp();
-		$inevent->signIn($appID, $appSecret, $personID);
+		$inevent = new InEventCompany();
+		$inevent->signIn($companyID, $companySecret, $personID);
 
 	1. Choose one of multiple classes (/modules) and create an object.
 		$inevent = new InEventActivity();
@@ -41,9 +41,9 @@ require_once('InEvent/InEvent.php');
 $inevent = new InEventPerson();
 $inevent->signIn($email, $password);
 
-// For apps
-$inevent = new InEventApp();
-$inevent->signIn($appID, $appSecret, $personID);
+// For companies
+$inevent = new InEvent();
+$inevent->signIn($companyID, $companySecret, $personID);
 
 // Fetch some information
 // PHP 5.3 and below

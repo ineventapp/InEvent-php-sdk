@@ -30,8 +30,8 @@ class InEventPerson extends InEvent {
 		return $this->getJSONObject("person", "getDetails", $attributes);
 	}
 
-	public function edit($name, $value) {
-		$attributes = array("GET" => array("name" => $name), "POST" => array("value" => $value));
+	public function edit($key, $value) {
+		$attributes = array("GET" => array("key" => $key), "POST" => array("value" => $value));
 		return $this->getJSONObject("person", "edit", $attributes);
 	}
 
