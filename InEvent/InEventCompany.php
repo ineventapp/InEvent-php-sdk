@@ -3,8 +3,13 @@
 class InEventCompany extends InEvent {
 
     public function signIn($companyID, $cryptMessage) {
+        $cryptMessage = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $companySecret, json_encode(array("personID" => $personID)), MCRYPT_MODE_ECB));
+    
         $attributes = array("GET" => array("companyID" => $companyID, "cryptMessage" => $cryptMessage));
-        return $this->getJSONObject("company", "signIn", $attributes);
+    
+        $json = $this->getJSONObject("company", "signIn", $attributes);
+        $this->token->tokenID = $json["tokenID"];
+        return $json;
     }
 
     public function getDetails() {

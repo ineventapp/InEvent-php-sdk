@@ -2,19 +2,29 @@
 
 class InEventPerson extends InEvent {
 
+ 
     public function signIn($email, $password) {
         $attributes = array("GET" => array("email" => $email, "password" => $password));
-        return $this->getJSONObject("person", "signIn", $attributes);
+ 
+        $json = $this->getJSONObject("person", "signIn", $attributes);
+        $this->token->tokenID = $json["tokenID"];
+        return $json;
     }
-
+ 
     public function signInWithLinkedIn($linkedInToken) {
         $attributes = array("GET" => array("linkedInToken" => $linkedInToken));
-        return $this->getJSONObject("person", "signInWithLinkedIn", $attributes);
+ 
+        $json = $this->getJSONObject("person", "signInWithLinkedIn", $attributes);
+        $this->token->tokenID = $json["tokenID"];
+        return $json;
     }
-
+ 
     public function signInWithFacebook($facebookToken) {
         $attributes = array("GET" => array("facebookToken" => $facebookToken));
-        return $this->getJSONObject("person", "signInWithFacebook", $attributes);
+ 
+        $json = $this->getJSONObject("person", "signInWithFacebook", $attributes);
+        $this->token->tokenID = $json["tokenID"];
+        return $json;
     }
 
     public function getDetails() {
