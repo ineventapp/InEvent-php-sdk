@@ -2,7 +2,7 @@
 
 class InEventCompany extends InEvent {
 
-    public function signIn($companyID, $cryptMessage) {
+    public function signIn($companyID, $companySecret, $personID) {
         $cryptMessage = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $companySecret, json_encode(array("personID" => $personID)), MCRYPT_MODE_ECB));
     
         $attributes = array("GET" => array("companyID" => $companyID, "cryptMessage" => $cryptMessage));
