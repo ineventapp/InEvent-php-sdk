@@ -30,7 +30,7 @@ require_once('InEventQuiz.php');
 class InEvent {
 
 	/* The oficial api url */
-	public $url = 'http://inevent.us/developer/api/';
+	public $url = 'https://api.inevent.us/';
 
 	/* The tokenID */
 	public $token = false;
@@ -105,6 +105,9 @@ class InEvent {
 		curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
 		curl_setopt($ci, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, TRUE);
+        curl_setopt($ch, CURLOPT_CAINFO, 'inevent.pem');
 		curl_setopt($ci, CURLOPT_HEADER, FALSE);
 		curl_setopt($ci, CURLOPT_POST, FALSE);
 		curl_setopt($ci, CURLOPT_URL, $this->url . "?" . $getProperties);
