@@ -12,15 +12,10 @@ require_once('InEvent/InEvent.php');
 /*
 	Simple and direct. That's the way to write a library.
 
-	0. Sign in using one of InEvent's methods
+	0. Sign in using InEvent's signIn method
 	
 		$inevent = new InEventPerson();
 		$inevent->signIn($email, $password);
-
-		OR
-
-		$inevent = new InEventCompany();
-		$inevent->signIn($companyID, $companySecret, $personID);
 
 	1. Choose one of multiple classes (/modules) and create an object.
 		$inevent = new InEventActivity();
@@ -40,10 +35,6 @@ require_once('InEvent/InEvent.php');
 // For person
 $inevent = new InEventPerson();
 $inevent->signIn($email, $password);
-
-// For companies
-$inevent = new InEvent();
-$inevent->signIn($companyID, $companySecret, $personID);
 
 // Fetch some information
 // PHP 5.3 and below
