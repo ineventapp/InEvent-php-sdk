@@ -4,27 +4,32 @@ class InEventMap extends InEvent {
 
     public function createItem($mapID, $name) {
         $attributes = array("GET" => array("mapID" => $mapID), "POST" => array("name" => $name));
-        return $this->getJSONObject("map", "createItem", $attributes);
+        $json = $this->getJSONObject("map", "createItem", $attributes);
+        return $json;
     }
 
     public function edit($mapID, $key, $value) {
         $attributes = array("GET" => array("mapID" => $mapID, "key" => $key), "POST" => array("value" => $value));
-        return $this->getJSONObject("map", "edit", $attributes);
+        $json = $this->getJSONObject("map", "edit", $attributes);
+        return $json;
     }
 
     public function editItem($mapItemID, $key, $value) {
         $attributes = array("GET" => array("mapItemID" => $mapItemID, "key" => $key), "POST" => array("value" => $value));
-        return $this->getJSONObject("map", "editItem", $attributes);
+        $json = $this->getJSONObject("map", "editItem", $attributes);
+        return $json;
     }
 
     public function removeItem($mapItemID) {
         $attributes = array("GET" => array("mapItemID" => $mapItemID));
-        return $this->getJSONObject("map", "removeItem", $attributes);
+        $json = $this->getJSONObject("map", "removeItem", $attributes);
+        return $json;
     }
 
     public function getAll($eventID) {
         $attributes = array("GET" => array("eventID" => $eventID));
-        return $this->getJSONObject("map", "getAll", $attributes);
+        $json = $this->getJSONObject("map", "getAll", $attributes);
+        return $json;
     }
 
 }

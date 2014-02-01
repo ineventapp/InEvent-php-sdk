@@ -4,17 +4,20 @@ class InEventPhoto extends InEvent {
 
     public function post($eventID, $url) {
         $attributes = array("GET" => array("eventID" => $eventID), "POST" => array("url" => $url));
-        return $this->getJSONObject("photo", "post", $attributes);
+        $json = $this->getJSONObject("photo", "post", $attributes);
+        return $json;
     }
 
     public function getAll($eventID) {
         $attributes = array("GET" => array("eventID" => $eventID));
-        return $this->getJSONObject("photo", "getAll", $attributes);
+        $json = $this->getJSONObject("photo", "getAll", $attributes);
+        return $json;
     }
 
     public function getSingle($photoID) {
         $attributes = array("GET" => array("photoID" => $photoID));
-        return $this->getJSONObject("photo", "getSingle", $attributes);
+        $json = $this->getJSONObject("photo", "getSingle", $attributes);
+        return $json;
     }
 
 }
