@@ -50,39 +50,39 @@ class InEventActivity extends InEvent {
         return $json;
     }
 
-    public function confirmApproval($activityID, $personID) {
+    public function confirmApprovalForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "confirmApproval", $attributes);
+        $json = $this->getJSONObject("activity", "confirmApprovalForPerson", $attributes);
         return $json;
     }
 
-    public function revokeApproval($activityID, $personID) {
+    public function revokeApprovalForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "revokeApproval", $attributes);
+        $json = $this->getJSONObject("activity", "revokeApprovalForPerson", $attributes);
         return $json;
     }
 
-    public function confirmEntrance($activityID, $personID) {
+    public function confirmEntranceForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "confirmEntrance", $attributes);
+        $json = $this->getJSONObject("activity", "confirmEntranceForPerson", $attributes);
         return $json;
     }
 
-    public function revokeEntrance($activityID, $personID) {
+    public function revokeEntranceForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "revokeEntrance", $attributes);
+        $json = $this->getJSONObject("activity", "revokeEntranceForPerson", $attributes);
         return $json;
     }
 
-    public function confirmPayment($activityID, $personID) {
+    public function confirmPaymentForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "confirmPayment", $attributes);
+        $json = $this->getJSONObject("activity", "confirmPaymentForPerson", $attributes);
         return $json;
     }
 
-    public function revokePayment($activityID, $personID) {
+    public function revokePaymentForPerson($activityID, $personID) {
         $attributes = array("GET" => array("activityID" => $activityID, "personID" => $personID));
-        $json = $this->getJSONObject("activity", "revokePayment", $attributes);
+        $json = $this->getJSONObject("activity", "revokePaymentForPerson", $attributes);
         return $json;
     }
 

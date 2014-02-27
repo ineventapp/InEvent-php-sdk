@@ -4,6 +4,8 @@
 * Pedro Góes (contato@estudiotrilha.com.br) http://estudiotrilha.com.br
 *
 * Oficial InEvent's PHP Library
+*
+* All rights reserved
 */
 
 // Include our token
@@ -14,6 +16,7 @@ require_once('InEventActivity.php');
 require_once('InEventAd.php');
 require_once('InEventCompany.php');
 require_once('InEventContest.php');
+require_once('InEventEarth.php');
 require_once('InEventError.php');
 require_once('InEventEvent.php');
 require_once('InEventExhibitor.php');
@@ -23,6 +26,7 @@ require_once('InEventPayment.php');
 require_once('InEventPerson.php');
 require_once('InEventPhoto.php');
 require_once('InEventQuiz.php');
+require_once('InEventTheme.php');
 
 /**
 * InEvent class
@@ -30,7 +34,7 @@ require_once('InEventQuiz.php');
 class InEvent {
 
 	/* The oficial api url */
-	public $url = 'https://api.inevent.us/';
+	const API_BASE_URI = 'https://api.inevent.us/';
 
 	/* The tokenID */
 	public $token = false;
@@ -57,7 +61,7 @@ class InEvent {
 	public $format = 'json';
 
 	/* Set the userAgent. */
-	public $userAgent = 'InEvent v0.1';
+	public $userAgent = 'InEvent PHP SDK v0.1';
 
 	/**
 	* Construct InEvent object
@@ -80,7 +84,7 @@ class InEvent {
 	*
 	* @return API results
 	*/
-	function getJSONObject($namespace, $method, $attributes) {
+	public function getJSONObject($namespace, $method, $attributes = array()) {
 
 		// Properties
 		$this->namespace = $namespace;
@@ -111,17 +115,18 @@ class InEvent {
         curl_setopt($ci, CURLOPT_CAINFO, (__DIR__ . '/inevent.pem'));
 		curl_setopt($ci, CURLOPT_HEADER, FALSE);
 		curl_setopt($ci, CURLOPT_POST, FALSE);
-		curl_setopt($ci, CURLOPT_URL, $this->url . "?" . $getProperties);
+		curl_setopt($ci, CURLOPT_URL, self::API_BASE_URI . "?" . $getProperties);
 
 		if (!empty($postProperties)) curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
 
-		// Curl response 
-		$response = curl_exec($ci);
-		$this->httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
-		$this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
+        // Display its output
+        $response = curl_exec($ch);
+        $this->httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+        $this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
+        curl_close($ci);
 
-		curl_close($ci);
-		return json_decode($response, true);
+        // Display its output
+        return json_decode($response, true);
 	}
 
 	/**

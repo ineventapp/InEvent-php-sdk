@@ -56,9 +56,15 @@ class InEventCompany extends InEvent {
         return $json;
     }
 
-    public function getEvents($companyID, $selection, $order) {
-        $attributes = array("GET" => array("companyID" => $companyID, "selection" => $selection, "order" => $order));
+    public function getEvents($companyID, $name, $city, $theme, $dateBegin, $dateEnd, $order) {
+        $attributes = array("GET" => array("companyID" => $companyID, "name" => $name, "city" => $city, "theme" => $theme, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd, "order" => $order));
         $json = $this->getJSONObject("company", "getEvents", $attributes);
+        return $json;
+    }
+
+    public function getEventsForPerson($companyID, $selection, $name, $city, $theme, $dateBegin, $dateEnd, $order) {
+        $attributes = array("GET" => array("companyID" => $companyID, "selection" => $selection, "name" => $name, "city" => $city, "theme" => $theme, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd, "order" => $order));
+        $json = $this->getJSONObject("company", "getEventsForPerson", $attributes);
         return $json;
     }
 

@@ -53,6 +53,12 @@ class InEventPerson extends InEvent {
         return $json;
     }
 
+    public function changePassword($oldPassword, $newPassword) {
+        $attributes = array("GET" => array("oldPassword" => $oldPassword, "newPassword" => $newPassword));
+        $json = $this->getJSONObject("person", "changePassword", $attributes);
+        return $json;
+    }
+
     public function subscribe($email) {
         $attributes = array("GET" => array("email" => $email));
         $json = $this->getJSONObject("person", "subscribe", $attributes);
@@ -65,9 +71,15 @@ class InEventPerson extends InEvent {
         return $json;
     }
 
-    public function changePassword($oldPassword, $newPassword) {
-        $attributes = array("GET" => array("oldPassword" => $oldPassword, "newPassword" => $newPassword));
-        $json = $this->getJSONObject("person", "changePassword", $attributes);
+    public function makePublic() {
+        $attributes = array("GET" => array());
+        $json = $this->getJSONObject("person", "makePublic", $attributes);
+        return $json;
+    }
+
+    public function makePrivate() {
+        $attributes = array("GET" => array());
+        $json = $this->getJSONObject("person", "makePrivate", $attributes);
         return $json;
     }
 

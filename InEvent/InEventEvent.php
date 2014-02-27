@@ -14,14 +14,20 @@ class InEventEvent extends InEvent {
         return $json;
     }
 
-    public function getEvents() {
-        $attributes = array("GET" => array());
+    public function operate($eventID, $action, $key, $value) {
+        $attributes = array("GET" => array("eventID" => $eventID, "action" => $action, "key" => $key), "POST" => array("value" => $value));
+        $json = $this->getJSONObject("event", "operate", $attributes);
+        return $json;
+    }
+
+    public function getEvents($name, $city, $theme, $dateBegin, $dateEnd, $order) {
+        $attributes = array("GET" => array("name" => $name, "city" => $city, "theme" => $theme, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd, "order" => $order));
         $json = $this->getJSONObject("event", "getEvents", $attributes);
         return $json;
     }
 
-    public function getEventsForPerson() {
-        $attributes = array("GET" => array());
+    public function getEventsForPerson($selection, $name, $city, $theme, $dateBegin, $dateEnd, $order) {
+        $attributes = array("GET" => array("selection" => $selection, "name" => $name, "city" => $city, "theme" => $theme, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd, "order" => $order));
         $json = $this->getJSONObject("event", "getEventsForPerson", $attributes);
         return $json;
     }
@@ -74,15 +80,39 @@ class InEventEvent extends InEvent {
         return $json;
     }
 
-    public function grantPermission($eventID, $personID) {
-        $attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID));
-        $json = $this->getJSONObject("event", "grantPermission", $attributes);
+    public function confirmEntrance($eventID) {
+        $attributes = array("GET" => array("eventID" => $eventID));
+        $json = $this->getJSONObject("event", "confirmEntrance", $attributes);
         return $json;
     }
 
-    public function revokePermission($eventID, $personID) {
+    public function confirmEntranceForPerson($eventID, $personID) {
         $attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID));
-        $json = $this->getJSONObject("event", "revokePermission", $attributes);
+        $json = $this->getJSONObject("event", "confirmEntranceForPerson", $attributes);
+        return $json;
+    }
+
+    public function revokeEntrance($eventID) {
+        $attributes = array("GET" => array("eventID" => $eventID));
+        $json = $this->getJSONObject("event", "revokeEntrance", $attributes);
+        return $json;
+    }
+
+    public function revokeEntranceForPerson($eventID, $personID) {
+        $attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID));
+        $json = $this->getJSONObject("event", "revokeEntranceForPerson", $attributes);
+        return $json;
+    }
+
+    public function grantPermissionForPerson($eventID, $personID) {
+        $attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID));
+        $json = $this->getJSONObject("event", "grantPermissionForPerson", $attributes);
+        return $json;
+    }
+
+    public function revokePermissionForPerson($eventID, $personID) {
+        $attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID));
+        $json = $this->getJSONObject("event", "revokePermissionForPerson", $attributes);
         return $json;
     }
 
@@ -101,6 +131,12 @@ class InEventEvent extends InEvent {
     public function sendMail($eventID, $selection, $order) {
         $attributes = array("GET" => array("eventID" => $eventID, "selection" => $selection, "order" => $order));
         $json = $this->getJSONObject("event", "sendMail", $attributes);
+        return $json;
+    }
+
+    public function getFlowForPerson($eventID) {
+        $attributes = array("GET" => array("eventID" => $eventID));
+        $json = $this->getJSONObject("event", "getFlowForPerson", $attributes);
         return $json;
     }
 
