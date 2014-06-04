@@ -13,20 +13,36 @@ require_once('InEventToken.php');
 
 // Include all our modules
 require_once('InEventActivity.php');
+require_once('InEventActivityPerson.php');
 require_once('InEventAd.php');
+require_once('InEventAlly.php');
 require_once('InEventCompany.php');
+require_once('InEventCompanyEvent.php');
+require_once('InEventCompanyParty.php');
+require_once('InEventCompanyPerson.php');
 require_once('InEventContest.php');
 require_once('InEventEarth.php');
 require_once('InEventError.php');
 require_once('InEventEvent.php');
+require_once('InEventEventPerson.php');
+require_once('InEventEventTheme.php');
 require_once('InEventExhibitor.php');
+require_once('InEventFacebook.php');
+require_once('InEventFlow.php');
 require_once('InEventGroup.php');
+require_once('InEventIndicator.php');
+require_once('InEventLinkedIn.php');
 require_once('InEventMap.php');
+require_once('InEventMapItem.php');
+require_once('InEventMaterial.php');
+require_once('InEventMews.php');
 require_once('InEventPayment.php');
 require_once('InEventPerson.php');
 require_once('InEventPhoto.php');
 require_once('InEventQuiz.php');
+require_once('InEventQuizOption.php');
 require_once('InEventTheme.php');
+require_once('InEventTicket.php');
 
 /**
 * InEvent class

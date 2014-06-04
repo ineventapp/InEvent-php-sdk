@@ -2,23 +2,23 @@
 
 class InEventPhoto extends InEvent {
 
-    public function post($eventID, $url) {
-        $attributes = array("GET" => array("eventID" => $eventID), "POST" => array("url" => $url));
-        $json = $this->getJSONObject("photo", "post", $attributes);
-        return $json;
-    }
+	public function createAuthenticatedAtEventWithUrl($url) {
+		$attributes = array("GET" => array(), "POST" => array("url" => $url));
+		$json = $this->getJSONObject("photo", "create", $attributes);
+		return $json;
+	}
 
-    public function getAll($eventID) {
-        $attributes = array("GET" => array("eventID" => $eventID));
-        $json = $this->getJSONObject("photo", "getAll", $attributes);
-        return $json;
-    }
+	public function findAuthenticatedAtEvent() {
+		$attributes = array("GET" => array());
+		$json = $this->getJSONObject("photo", "find", $attributes);
+		return $json;
+	}
 
-    public function getSingle($photoID) {
-        $attributes = array("GET" => array("photoID" => $photoID));
-        $json = $this->getJSONObject("photo", "getSingle", $attributes);
-        return $json;
-    }
+	public function getAuthenticatedAtPhoto($photoID) {
+		$attributes = array("GET" => array("photoID" => $photoID));
+		$json = $this->getJSONObject("photo", "get", $attributes);
+		return $json;
+	}
 
 }
 

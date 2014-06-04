@@ -1,28 +1,6 @@
 InEvent
 ========
 
-Português
-========
-
-Esse é o SDK oficial do InEvent para PHP. Toda sua documentação pode ser acessada em [http://inevent.us/developer/](http://inevent.us/developer/).
-
-Instalação
---------
-0. Envie todos os arquivos para seu servidor.
-1. Inclua o arquivo 'InEvent.php'.
-2. E pronto!
-
-Exemplo
---------
-Acesse o arquivo 'example.php' para um exemplo prático de como usar o SDK.
-
-Sobre
---------
-InEvent é uma criação do Estúdio Trilha.
-
-English
-========
-
 This is InEvent's official PHP's SDK. All its documentation can be accessed at [http://inevent.us/developer/](http://inevent.us/developer/).
 
 Installation
