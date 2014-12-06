@@ -2,15 +2,15 @@
 
 class InEventAd extends InEvent {
 
-	public function createAuthenticatedAtEventForExhibitorWithImageWithWeight($exhibitorID, $image, $weight) {
-		$attributes = array("GET" => array("exhibitorID" => $exhibitorID), "POST" => array("image" => $image, "weight" => $weight));
+	public function createAuthenticatedAtSponsorshipWithImageWithWeight($sponsorshipID, $image, $weight) {
+		$attributes = array("GET" => array("sponsorshipID" => $sponsorshipID), "POST" => array("image" => $image, "weight" => $weight));
 		$json = $this->getJSONObject("ad", "create", $attributes);
 		return $json;
 	}
 
-	public function createAuthenticatedAtEventWithImageWithWeight($image, $weight) {
-		$attributes = array("GET" => array(), "POST" => array("image" => $image, "weight" => $weight));
-		$json = $this->getJSONObject("ad", "create", $attributes);
+	public function editAuthenticatedAtAdWithKeyWithValue($adID, $key, $value) {
+		$attributes = array("GET" => array("adID" => $adID, "key" => $key), "POST" => array("value" => $value));
+		$json = $this->getJSONObject("ad", "edit", $attributes);
 		return $json;
 	}
 
@@ -20,8 +20,8 @@ class InEventAd extends InEvent {
 		return $json;
 	}
 
-	public function findAtEventForExhibitor($exhibitorID) {
-		$attributes = array("GET" => array("exhibitorID" => $exhibitorID));
+	public function findAtSponsorship($sponsorshipID) {
+		$attributes = array("GET" => array("sponsorshipID" => $sponsorshipID));
 		$json = $this->getJSONObject("ad", "find", $attributes);
 		return $json;
 	}
@@ -29,18 +29,6 @@ class InEventAd extends InEvent {
 	public function findAtEvent() {
 		$attributes = array("GET" => array());
 		$json = $this->getJSONObject("ad", "find", $attributes);
-		return $json;
-	}
-
-	public function seenAdAuthenticatedAtAd($adID) {
-		$attributes = array("GET" => array("adID" => $adID));
-		$json = $this->getJSONObject("ad", "seenAd", $attributes);
-		return $json;
-	}
-
-	public function seenAdAtAd($adID) {
-		$attributes = array("GET" => array("adID" => $adID));
-		$json = $this->getJSONObject("ad", "seenAd", $attributes);
 		return $json;
 	}
 

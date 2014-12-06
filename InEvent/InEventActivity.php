@@ -2,8 +2,8 @@
 
 class InEventActivity extends InEvent {
 
-	public function createAuthenticatedAtEventWithName($name) {
-		$attributes = array("GET" => array(), "POST" => array("name" => $name));
+	public function createAuthenticatedAtEventWithNameWithDateBeginWithDateEnd($name, $dateBegin, $dateEnd) {
+		$attributes = array("GET" => array(), "POST" => array("name" => $name, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd));
 		$json = $this->getJSONObject("activity", "create", $attributes);
 		return $json;
 	}
