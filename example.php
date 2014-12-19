@@ -12,36 +12,32 @@ require_once('InEvent/InEvent.php');
 /*
 	Simple and direct. That's the way to write a library.
 
-	0. Sign in using InEvent's signIn method
-	
-		$inevent = new InEventPerson();
-		$inevent->signIn($email, $password);
+	0. Sign in using InEvent's signIn method.
 
 	1. Choose one of multiple classes (/modules) and create an object.
-		$inevent = new InEventActivity();
 	
-	2. Call a method
-		echo json_encode($inevent->getEvents());
+	2. Call a method.
 
 	3. Drink some beer!
 
 	P.S.
-	If you are on PHP 5.4 and over, you can directly call a method
-		echo json_encode((new InEventEvent())->getEvents());
+	If you are on PHP 5.4 and over, you can directly call a method.
 
  */
 
 // Sign In
 // For person
 $inevent = new InEventPerson();
-$inevent->signIn($email, $password);
+$email = "";
+$password = "";
+$inevent->signInWithEmailWithPassword($email, $password);
 
 // Fetch some information
 // PHP 5.3 and below
 $inevent = new InEventEvent();
-echo json_encode($inevent->getEvents());
+$inevent->findAuthenticatedWithSelectionWithNameWithCityWithThemeWithDateBeginWithDateEndWithOrder("all", "any", "any", "any", "any", "any", "any");
 
 // PHP 5.4 and over
-echo json_encode((new InEventEvent())->getEvents());
+(new InEventEvent())->findAuthenticatedWithSelectionWithNameWithCityWithThemeWithDateBeginWithDateEndWithOrder("all", "any", "any", "any", "any", "any", "any");
 
 ?>

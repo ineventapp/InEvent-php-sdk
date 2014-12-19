@@ -2,8 +2,8 @@
 
 class InEventTrack extends InEvent {
 
-	public function createAuthenticatedAtEventWithNameWithColor($name, $color) {
-		$attributes = array("GET" => array(), "POST" => array("name" => $name, "color" => $color));
+	public function createAuthenticatedAtEventWithNameWithColor($eventID, $name, $color) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("name" => $name, "color" => $color));
 		$json = $this->getJSONObject("track", "create", $attributes);
 		return $json;
 	}
@@ -14,8 +14,8 @@ class InEventTrack extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("track", "find", $attributes);
 		return $json;
 	}

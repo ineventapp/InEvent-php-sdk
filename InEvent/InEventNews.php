@@ -2,14 +2,14 @@
 
 class InEventNews extends InEvent {
 
-	public function createAuthenticatedAtEventForPersonWithMessage($personID, $message) {
-		$attributes = array("GET" => array("personID" => $personID), "POST" => array("message" => $message));
+	public function createAuthenticatedAtEventForPersonWithMessage($eventID, $personID, $message) {
+		$attributes = array("GET" => array("eventID" => $eventID, "personID" => $personID), "POST" => array("message" => $message));
 		$json = $this->getJSONObject("news", "create", $attributes);
 		return $json;
 	}
 
-	public function createAuthenticatedAtEventWithMessage($message) {
-		$attributes = array("GET" => array(), "POST" => array("message" => $message));
+	public function createAuthenticatedAtEventWithMessage($eventID, $message) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("message" => $message));
 		$json = $this->getJSONObject("news", "create", $attributes);
 		return $json;
 	}
@@ -26,8 +26,8 @@ class InEventNews extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEventWithSelection($selection) {
-		$attributes = array("GET" => array("selection" => $selection));
+	public function findAuthenticatedAtEventWithSelection($eventID, $selection) {
+		$attributes = array("GET" => array("eventID" => $eventID, "selection" => $selection));
 		$json = $this->getJSONObject("news", "find", $attributes);
 		return $json;
 	}

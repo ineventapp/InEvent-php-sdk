@@ -8,14 +8,14 @@ class InEventEvent extends InEvent {
 		return $json;
 	}
 
-	public function editAuthenticatedAtEventWithKeyWithValue($key, $value) {
-		$attributes = array("GET" => array("key" => $key), "POST" => array("value" => $value));
+	public function editAuthenticatedAtEventWithKeyWithValue($eventID, $key, $value) {
+		$attributes = array("GET" => array("eventID" => $eventID, "key" => $key), "POST" => array("value" => $value));
 		$json = $this->getJSONObject("event", "edit", $attributes);
 		return $json;
 	}
 
-	public function removeAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function removeAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("event", "remove", $attributes);
 		return $json;
 	}
@@ -32,14 +32,14 @@ class InEventEvent extends InEvent {
 		return $json;
 	}
 
-	public function getAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function getAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("event", "get", $attributes);
 		return $json;
 	}
 
-	public function getAtEvent() {
-		$attributes = array("GET" => array());
+	public function getAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("event", "get", $attributes);
 		return $json;
 	}

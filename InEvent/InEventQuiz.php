@@ -2,8 +2,8 @@
 
 class InEventQuiz extends InEvent {
 
-	public function createAuthenticatedAtEventWithText($text) {
-		$attributes = array("GET" => array(), "POST" => array("text" => $text));
+	public function createAuthenticatedAtEventWithText($eventID, $text) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("text" => $text));
 		$json = $this->getJSONObject("quiz", "create", $attributes);
 		return $json;
 	}
@@ -14,8 +14,8 @@ class InEventQuiz extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("quiz", "find", $attributes);
 		return $json;
 	}

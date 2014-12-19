@@ -8,8 +8,8 @@ class InEventCompanyEvent extends InEvent {
 		return $json;
 	}
 
-	public function dismissAuthenticatedAtEventAtCompany($companyID, ) {
-		$attributes = array("GET" => array("companyID" => $companyID, ));
+	public function dismissAuthenticatedAtEventAtCompany($companyID, $eventID) {
+		$attributes = array("GET" => array("companyID" => $companyID, "eventID" => $eventID));
 		$json = $this->getJSONObject("company.event", "dismiss", $attributes);
 		return $json;
 	}
@@ -26,14 +26,14 @@ class InEventCompanyEvent extends InEvent {
 		return $json;
 	}
 
-	public function approveAuthenticatedAtEventAtCompany($companyID, ) {
-		$attributes = array("GET" => array("companyID" => $companyID, ));
+	public function approveAuthenticatedAtEventAtCompany($companyID, $eventID) {
+		$attributes = array("GET" => array("companyID" => $companyID, "eventID" => $eventID));
 		$json = $this->getJSONObject("company.event", "approve", $attributes);
 		return $json;
 	}
 
-	public function reviewAuthenticatedAtEventAtCompanyWithMessage($companyID, $message) {
-		$attributes = array("GET" => array("companyID" => $companyID, ), "POST" => array("message" => $message));
+	public function reviewAuthenticatedAtEventAtCompanyWithMessage($companyID, $eventID, $message) {
+		$attributes = array("GET" => array("companyID" => $companyID, "eventID" => $eventID), "POST" => array("message" => $message));
 		$json = $this->getJSONObject("company.event", "review", $attributes);
 		return $json;
 	}

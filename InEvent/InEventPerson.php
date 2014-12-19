@@ -5,7 +5,7 @@ class InEventPerson extends InEvent {
 	public function signInWithEmailWithPassword($email, $password) {
 		$attributes = array("GET" => array("email" => $email, "password" => $password));
 		$json = $this->getJSONObject("person", "signIn", $attributes);
-		$this->token->tokenID = $json["tokenID"];
+		$this->token->tokenID = $json["data"][0]["tokenID"];
 		return $json;
 	}
 

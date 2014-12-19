@@ -8,8 +8,8 @@ class InEventCase extends InEvent {
 		return $json;
 	}
 
-	public function getAtEvent() {
-		$attributes = array("GET" => array());
+	public function getAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("case", "get", $attributes);
 		return $json;
 	}

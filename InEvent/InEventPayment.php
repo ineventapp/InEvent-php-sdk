@@ -8,20 +8,20 @@ class InEventPayment extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("payment", "find", $attributes);
 		return $json;
 	}
 
-	public function requestAddressAuthenticatedAtEventAtPayment($paymentID) {
-		$attributes = array("GET" => array("paymentID" => $paymentID));
+	public function requestAddressAuthenticatedAtEventAtPayment($eventID, $paymentID) {
+		$attributes = array("GET" => array("eventID" => $eventID, "paymentID" => $paymentID));
 		$json = $this->getJSONObject("payment", "requestAddress", $attributes);
 		return $json;
 	}
 
-	public function provideConfirmationAtEventWithCollection_id($collection_id) {
-		$attributes = array("GET" => array("collection_id" => $collection_id));
+	public function provideConfirmationAtEventWithCollection_id($eventID, $collection_id) {
+		$attributes = array("GET" => array("eventID" => $eventID, "collection_id" => $collection_id));
 		$json = $this->getJSONObject("payment", "provideConfirmation", $attributes);
 		return $json;
 	}

@@ -26,8 +26,8 @@ class InEventAd extends InEvent {
 		return $json;
 	}
 
-	public function findAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("ad", "find", $attributes);
 		return $json;
 	}

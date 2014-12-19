@@ -21,7 +21,6 @@ require_once("InEventCompany.php");
 require_once("InEventCompanyEvent.php");
 require_once("InEventCompanyParty.php");
 require_once("InEventCompanyPerson.php");
-require_once("InEventContest.php");
 require_once("InEventEarth.php");
 require_once("InEventError.php");
 require_once("InEventEvent.php");
@@ -52,7 +51,7 @@ require_once("InEventTracking.php");
 class InEvent {
 
 	/* The oficial api url */
-	const API_BASE_URI = 'https://api.inevent.us/';
+	const API_BASE_URI = 'https://inevent.us/api/';
 
 	/* The tokenID */
 	public $token = false;
@@ -109,7 +108,7 @@ class InEvent {
 		$this->method = $method;
 
 		// Add remaining properties
-		$attributes["GET"]["method"] = $this->namespace . "." . $this->method;
+		$attributes["GET"]["action"] = $this->namespace . "." . $this->method;
 		if (!empty($this->token->tokenID)) $attributes["GET"]["tokenID"] = $this->token->tokenID;
 
 		// Encode properties
@@ -119,29 +118,41 @@ class InEvent {
 	    // Clean up old variables
 		$this->httpInfo = array();
 
-		// Curl settings
-		$ci = curl_init();
-		curl_setopt($ci, CURLOPT_USERAGENT, $this->userAgent);
-		curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
-		curl_setopt($ci, CURLOPT_TIMEOUT, $this->timeout);
-		curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
-		curl_setopt($ci, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
-        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, TRUE);
-        curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ci, CURLOPT_SSLVERSION, 3);
-        curl_setopt($ci, CURLOPT_CAINFO, (__DIR__ . '/inevent.pem'));
-		curl_setopt($ci, CURLOPT_HEADER, FALSE);
-		curl_setopt($ci, CURLOPT_POST, FALSE);
-		curl_setopt($ci, CURLOPT_URL, self::API_BASE_URI . "?" . $getProperties);
+		try {
+			// Curl settings
+			$ci = curl_init();
+			curl_setopt($ci, CURLOPT_USERAGENT, $this->userAgent);
+			curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
+			curl_setopt($ci, CURLOPT_TIMEOUT, $this->timeout);
+			curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
+			curl_setopt($ci, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
+	        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, TRUE);
+	        curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
+	        curl_setopt($ci, CURLOPT_CAINFO, (__DIR__ . '/ssl-bundle.crt'));
+			curl_setopt($ci, CURLOPT_HEADER, FALSE);
+			curl_setopt($ci, CURLOPT_POST, FALSE);
+			curl_setopt($ci, CURLOPT_URL, self::API_BASE_URI . "?" . $getProperties);
 
-		if (!empty($postProperties)) curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
+			if (!empty($postProperties)) curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
 
-        // Display its output
-        $response = curl_exec($ch);
-        $this->httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
-        $this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
-        curl_close($ci);
+	        // Display its output
+	        $response = curl_exec($ci);
+
+	        // Capture any errors
+		    if ($response === FALSE) {
+		    	throw new Exception(curl_error($ci), curl_errno($ci));
+		    }
+
+		    $this->httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+	        $this->httpInfo = array_merge($this->httpInfo, curl_getinfo($ci));
+	        curl_close($ci);
+
+	    } catch(Exception $e) {
+
+	        trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
+
+	    }
 
         // Display its output
         return json_decode($response, true);

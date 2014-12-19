@@ -2,8 +2,8 @@
 
 class InEventTicket extends InEvent {
 
-	public function createAuthenticatedAtEventWithName($name) {
-		$attributes = array("GET" => array(), "POST" => array("name" => $name));
+	public function createAuthenticatedAtEventWithName($eventID, $name) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("name" => $name));
 		$json = $this->getJSONObject("ticket", "create", $attributes);
 		return $json;
 	}
@@ -20,8 +20,8 @@ class InEventTicket extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("ticket", "find", $attributes);
 		return $json;
 	}

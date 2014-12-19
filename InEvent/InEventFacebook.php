@@ -5,7 +5,7 @@ class InEventFacebook extends InEvent {
 	public function signInWithFacebookToken($facebookToken) {
 		$attributes = array("GET" => array("facebookToken" => $facebookToken));
 		$json = $this->getJSONObject("facebook", "signIn", $attributes);
-		$this->token->tokenID = $json["tokenID"];
+		$this->token->tokenID = $json["data"][0]["tokenID"];
 		return $json;
 	}
 

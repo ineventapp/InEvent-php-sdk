@@ -8,8 +8,8 @@ class InEventSponsor extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEventWithCompanyNameWithNameWithEmailWithTelephoneWithOrder($companyName, $name, $email, $telephone, $order) {
-		$attributes = array("GET" => array("companyName" => $companyName, "name" => $name, "email" => $email, "telephone" => $telephone, "order" => $order));
+	public function findAuthenticatedAtEventWithCompanyNameWithNameWithEmailWithTelephoneWithOrder($eventID, $companyName, $name, $email, $telephone, $order) {
+		$attributes = array("GET" => array("eventID" => $eventID, "companyName" => $companyName, "name" => $name, "email" => $email, "telephone" => $telephone, "order" => $order));
 		$json = $this->getJSONObject("sponsor", "find", $attributes);
 		return $json;
 	}

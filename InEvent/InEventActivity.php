@@ -2,14 +2,14 @@
 
 class InEventActivity extends InEvent {
 
-	public function createAuthenticatedAtEventWithNameWithDateBeginWithDateEnd($name, $dateBegin, $dateEnd) {
-		$attributes = array("GET" => array(), "POST" => array("name" => $name, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd));
+	public function createAuthenticatedAtEventWithNameWithDateBeginWithDateEnd($eventID, $name, $dateBegin, $dateEnd) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("name" => $name, "dateBegin" => $dateBegin, "dateEnd" => $dateEnd));
 		$json = $this->getJSONObject("activity", "create", $attributes);
 		return $json;
 	}
 
-	public function createAuthenticatedAtEventWithPath($path) {
-		$attributes = array("GET" => array(), "POST" => array("path" => $path));
+	public function createAuthenticatedAtEventWithPath($eventID, $path) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("path" => $path));
 		$json = $this->getJSONObject("activity", "create", $attributes);
 		return $json;
 	}
@@ -26,20 +26,20 @@ class InEventActivity extends InEvent {
 		return $json;
 	}
 
-	public function findAuthenticatedAtEventWithSelectionForPerson($selection, $personID) {
-		$attributes = array("GET" => array("selection" => $selection, "personID" => $personID));
+	public function findAuthenticatedAtEventWithSelectionForPerson($eventID, $selection, $personID) {
+		$attributes = array("GET" => array("eventID" => $eventID, "selection" => $selection, "personID" => $personID));
 		$json = $this->getJSONObject("activity", "find", $attributes);
 		return $json;
 	}
 
-	public function findAuthenticatedAtEventWithSelection($selection) {
-		$attributes = array("GET" => array("selection" => $selection));
+	public function findAuthenticatedAtEventWithSelection($eventID, $selection) {
+		$attributes = array("GET" => array("eventID" => $eventID, "selection" => $selection));
 		$json = $this->getJSONObject("activity", "find", $attributes);
 		return $json;
 	}
 
-	public function findAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("activity", "find", $attributes);
 		return $json;
 	}

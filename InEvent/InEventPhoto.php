@@ -2,14 +2,14 @@
 
 class InEventPhoto extends InEvent {
 
-	public function createAuthenticatedAtEventWithUrl($url) {
-		$attributes = array("GET" => array(), "POST" => array("url" => $url));
+	public function createAuthenticatedAtEventWithUrl($eventID, $url) {
+		$attributes = array("GET" => array("eventID" => $eventID), "POST" => array("url" => $url));
 		$json = $this->getJSONObject("photo", "create", $attributes);
 		return $json;
 	}
 
-	public function findAuthenticatedAtEvent() {
-		$attributes = array("GET" => array());
+	public function findAuthenticatedAtEvent($eventID) {
+		$attributes = array("GET" => array("eventID" => $eventID));
 		$json = $this->getJSONObject("photo", "find", $attributes);
 		return $json;
 	}
