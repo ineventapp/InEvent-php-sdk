@@ -1,7 +1,7 @@
 <?php
 
 /*
-* Pedro Góes (contato@estudiotrilha.com.br) http://estudiotrilha.com.br
+* Pedro Góes (goes@inevent.us) https://inevent.us
 *
 * Oficial InEvent's PHP Library
 *
@@ -96,6 +96,11 @@ class InEvent {
     	return $this;
   	}
 
+  	public function setSandbox($sandbox) {
+    	$this->token->sandbox = (int)$sandbox;
+    	return $this;
+  	}
+
 	/**
 	* Make an HTTP request
 	*
@@ -110,6 +115,7 @@ class InEvent {
 		// Add remaining properties
 		$attributes["GET"]["action"] = $this->namespace . "." . $this->method;
 		if (!empty($this->token->tokenID)) $attributes["GET"]["tokenID"] = $this->token->tokenID;
+		if (!empty($this->token->sandbox)) $attributes["GET"]["sandbox"] = $this->token->sandbox;
 
 		// Encode properties
 	    $getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
@@ -131,7 +137,7 @@ class InEvent {
 	        curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
 	        curl_setopt($ci, CURLOPT_CAINFO, (__DIR__ . '/ssl-bundle.crt'));
 			curl_setopt($ci, CURLOPT_HEADER, FALSE);
-			curl_setopt($ci, CURLOPT_POST, FALSE);
+			curl_setopt($ci, CURLOPT_POST, TRUE);
 			curl_setopt($ci, CURLOPT_URL, self::API_BASE_URI . "?" . $getProperties);
 
 			if (!empty($postProperties)) curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
@@ -149,9 +155,7 @@ class InEvent {
 	        curl_close($ci);
 
 	    } catch(Exception $e) {
-
-	        trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
-
+	        trigger_error(sprintf('Curl failed #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
 	    }
 
         // Display its output

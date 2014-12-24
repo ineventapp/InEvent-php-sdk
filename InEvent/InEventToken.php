@@ -10,6 +10,7 @@ class InEventToken {
 
     // Global
     public $tokenID = "";
+    public $sandbox = 0;
     
 	// Store a class instance
     static private $instance;
