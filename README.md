@@ -19,4 +19,4 @@ Just open an issue on Github and I'll get to it as soon as possible.
 
 About
 --------
-InEvent is brought to you by Estúdio Trilha.
+This SDK is brought to you by InEvent.
