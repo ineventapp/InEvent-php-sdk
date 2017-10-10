@@ -1,44 +1,38 @@
 <?php
 
 /*
-* Pedro Góes (contato@estudiotrilha.com.br) http://estudiotrilha.com.br
-*
 * Oficial InEvent's PHP Library
 */
 
 // Include our main class
-require_once('InEvent/InEvent.php');
+require_once('sdk/InEvent.php');
 
-/*
-	Simple and direct. That's the way to write a library.
+// Gather our InEvent client
+$client = new InEvent();
 
-	0. Sign in using InEvent's signIn method.
+// Sign In for person
+$response = InEvent\Person::signIn($client, [
+	"username" => "youremail@domain.com"
+], [
+	"password" => "yourpassword"
+]);
 
-	1. Choose one of multiple classes (/modules) and create an object.
-	1.1. (optional) Define your sandbox mode through setSandbox().
-	1.2. (optional) Define your tokenID through setTokenID().
-	
-	2. Call a method.
-	2.1. (optional) See its response through var_dump($this).
-	2.2. (optional) See its response code through var_dump($this->httpCode).
+// Dumps our response
+var_dump($response['body']);
 
-	3. Drink some beer!
+// Verifies if code is 200 OK
+if ($response['code'] == 200) {
+	// Sets our client tokenID
+	$client->setTokenID($response['body']['data'][0]['tokenID']);
 
-	P.S.
-	If you are on PHP 5.4 and over, you can directly call a method.
+	// Gather person companies
+	$response = InEvent\Company::find($client);
 
- */
+	// Dumps our response
+	var_dump($response['body']);
 
-// Sign In
-// For person
-$inevent = new InEventPerson();
-$inevent->signInWithEmailWithPassword($email, $password);
-var_dump($inevent->httpCode);
+} else {
+	echo "Check your credentials and try again later.\n";
 
-// Fetch some information
-// PHP 5.3 and below
-$inevent = new InEventEvent();
-$inevent->findAuthenticatedWithSelectionWithNameWithCityWithThemeWithDateBeginWithDateEndWithOrder("all", "any", "any", "any", "any", "any", "any");
-var_dump($inevent->httpCode);
-
+}
 ?>
