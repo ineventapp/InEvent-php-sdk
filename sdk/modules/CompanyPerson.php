@@ -27,5 +27,10 @@ class Person {
 		$json = $client->getJSONObject("company.person", "sync", $attributes);
 		return $json;
 	}
+	public static function journey($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company.person", "journey", $attributes);
+		return $json;
+	}
 }
 ?>

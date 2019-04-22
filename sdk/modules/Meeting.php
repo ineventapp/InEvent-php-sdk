@@ -17,14 +17,14 @@ class Meeting {
 		$json = $client->getJSONObject("meeting", "remove", $attributes);
 		return $json;
 	}
-	public static function get($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("meeting", "get", $attributes);
-		return $json;
-	}
 	public static function find($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("meeting", "find", $attributes);
+		return $json;
+	}
+	public static function get($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting", "get", $attributes);
 		return $json;
 	}
 	public static function fill($client, array $get = array(), array $post = array()) {

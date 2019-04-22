@@ -27,6 +27,11 @@ class Quiz {
 		$json = $client->getJSONObject("quiz", "get", $attributes);
 		return $json;
 	}
+	public static function pushNotification($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("quiz", "pushNotification", $attributes);
+		return $json;
+	}
 	public static function respond($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("quiz", "respond", $attributes);

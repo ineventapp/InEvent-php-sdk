@@ -27,14 +27,14 @@ class Person {
 		$json = $client->getJSONObject("event.person", "get", $attributes);
 		return $json;
 	}
-	public static function ticket($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("event.person", "ticket", $attributes);
-		return $json;
-	}
 	public static function remember($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "remember", $attributes);
+		return $json;
+	}
+	public static function rsvp($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "rsvp", $attributes);
 		return $json;
 	}
 	public static function qrCode($client, array $get = array(), array $post = array()) {
@@ -47,9 +47,9 @@ class Person {
 		$json = $client->getJSONObject("event.person", "print", $attributes);
 		return $json;
 	}
-	public static function rsvp($client, array $get = array(), array $post = array()) {
+	public static function printed($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("event.person", "rsvp", $attributes);
+		$json = $client->getJSONObject("event.person", "printed", $attributes);
 		return $json;
 	}
 	public static function voucher($client, array $get = array(), array $post = array()) {

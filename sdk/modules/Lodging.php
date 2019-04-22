@@ -27,5 +27,10 @@ class Lodging {
 		$json = $client->getJSONObject("lodging", "get", $attributes);
 		return $json;
 	}
+	public static function stats($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("lodging", "stats", $attributes);
+		return $json;
+	}
 }
 ?>

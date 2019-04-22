@@ -17,10 +17,5 @@ class Literature {
 		$json = $client->getJSONObject("literature", "find", $attributes);
 		return $json;
 	}
-	public static function edit($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("literature", "edit", $attributes);
-		return $json;
-	}
 }
 ?>

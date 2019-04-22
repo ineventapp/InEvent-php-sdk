@@ -22,5 +22,10 @@ class Event {
 		$json = $client->getJSONObject("event", "sendSMS", $attributes);
 		return $json;
 	}
+	public static function search($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event", "search", $attributes);
+		return $json;
+	}
 }
 ?>

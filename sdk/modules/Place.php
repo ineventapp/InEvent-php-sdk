@@ -17,6 +17,11 @@ class Place {
 		$json = $client->getJSONObject("place", "find", $attributes);
 		return $json;
 	}
+	public static function findCategories($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("place", "findCategories", $attributes);
+		return $json;
+	}
 	public static function get($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("place", "get", $attributes);

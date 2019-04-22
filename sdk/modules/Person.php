@@ -20,11 +20,22 @@ class Person {
 	public static function signIn($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("person", "signIn", $attributes);
+		$client->token->tokenID = $json["data"][0]["tokenID"];
 		return $json;
 	}
 	public static function externalSignIn($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("person", "externalSignIn", $attributes);
+		return $json;
+	}
+	public static function enableTwoFactor($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "enableTwoFactor", $attributes);
+		return $json;
+	}
+	public static function disableTwoFactor($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "disableTwoFactor", $attributes);
 		return $json;
 	}
 	public static function sendRecovery($client, array $get = array(), array $post = array()) {
@@ -42,24 +53,24 @@ class Person {
 		$json = $client->getJSONObject("person", "changeLevel", $attributes);
 		return $json;
 	}
-	public static function terminate($client, array $get = array(), array $post = array()) {
+	public static function exportData($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("person", "terminate", $attributes);
+		$json = $client->getJSONObject("person", "exportData", $attributes);
 		return $json;
 	}
-	public static function subscribe($client, array $get = array(), array $post = array()) {
+	public static function terminateAccount($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("person", "subscribe", $attributes);
-		return $json;
-	}
-	public static function unsubscribe($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("person", "unsubscribe", $attributes);
+		$json = $client->getJSONObject("person", "terminateAccount", $attributes);
 		return $json;
 	}
 	public static function sendFeedback($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("person", "sendFeedback", $attributes);
+		return $json;
+	}
+	public static function sendBug($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "sendBug", $attributes);
 		return $json;
 	}
 }

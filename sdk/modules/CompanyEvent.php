@@ -27,16 +27,6 @@ class Event {
 		$json = $client->getJSONObject("company.event", "findAttendees", $attributes);
 		return $json;
 	}
-	public static function approve($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("company.event", "approve", $attributes);
-		return $json;
-	}
-	public static function review($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("company.event", "review", $attributes);
-		return $json;
-	}
 	public static function copy($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("company.event", "copy", $attributes);
@@ -45,6 +35,21 @@ class Event {
 	public static function budget($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("company.event", "budget", $attributes);
+		return $json;
+	}
+	public static function assignOwner($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company.event", "assignOwner", $attributes);
+		return $json;
+	}
+	public static function pin($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company.event", "pin", $attributes);
+		return $json;
+	}
+	public static function unpin($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company.event", "unpin", $attributes);
 		return $json;
 	}
 }

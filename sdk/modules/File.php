@@ -7,5 +7,10 @@ class File {
 		$json = $client->getJSONObject("file", "create", $attributes);
 		return $json;
 	}
+	public static function crop($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("file", "crop", $attributes);
+		return $json;
+	}
 }
 ?>

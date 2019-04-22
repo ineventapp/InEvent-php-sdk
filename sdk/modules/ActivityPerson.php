@@ -27,5 +27,10 @@ class Person {
 		$json = $client->getJSONObject("activity.person", "get", $attributes);
 		return $json;
 	}
+	public static function calculate($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("activity.person", "calculate", $attributes);
+		return $json;
+	}
 }
 ?>

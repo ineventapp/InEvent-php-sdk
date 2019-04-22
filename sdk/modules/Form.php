@@ -17,14 +17,19 @@ class Form {
 		$json = $client->getJSONObject("form", "remove", $attributes);
 		return $json;
 	}
+	public static function find($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("form", "find", $attributes);
+		return $json;
+	}
 	public static function get($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("form", "get", $attributes);
 		return $json;
 	}
-	public static function find($client, array $get = array(), array $post = array()) {
+	public static function respondRegistration($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("form", "find", $attributes);
+		$json = $client->getJSONObject("form", "respondRegistration", $attributes);
 		return $json;
 	}
 }

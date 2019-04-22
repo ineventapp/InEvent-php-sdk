@@ -1,5 +1,5 @@
 <?php
-namespace InEvent\_List;
+namespace InEvent\List;
 
 class Person {
 	public static function bind($client, array $get = array(), array $post = array()) {

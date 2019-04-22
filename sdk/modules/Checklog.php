@@ -22,9 +22,9 @@ class Checklog {
 		$json = $client->getJSONObject("checklog", "checkedIn", $attributes);
 		return $json;
 	}
-	public static function export($client, array $get = array(), array $post = array()) {
+	public static function find($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("checklog", "export", $attributes);
+		$json = $client->getJSONObject("checklog", "find", $attributes);
 		return $json;
 	}
 }

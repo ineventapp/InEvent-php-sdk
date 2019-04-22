@@ -7,6 +7,11 @@ class Invite {
 		$json = $client->getJSONObject("event.invite", "create", $attributes);
 		return $json;
 	}
+	public static function edit($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.invite", "edit", $attributes);
+		return $json;
+	}
 	public static function remove($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.invite", "remove", $attributes);
@@ -22,9 +27,9 @@ class Invite {
 		$json = $client->getJSONObject("event.invite", "get", $attributes);
 		return $json;
 	}
-	public static function available($client, array $get = array(), array $post = array()) {
+	public static function rsvp($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("event.invite", "available", $attributes);
+		$json = $client->getJSONObject("event.invite", "rsvp", $attributes);
 		return $json;
 	}
 }

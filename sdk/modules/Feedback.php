@@ -17,14 +17,14 @@ class Feedback {
 		$json = $client->getJSONObject("feedback", "remove", $attributes);
 		return $json;
 	}
-	public static function get($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("feedback", "get", $attributes);
-		return $json;
-	}
 	public static function find($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("feedback", "find", $attributes);
+		return $json;
+	}
+	public static function get($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("feedback", "get", $attributes);
 		return $json;
 	}
 	public static function pushNotification($client, array $get = array(), array $post = array()) {

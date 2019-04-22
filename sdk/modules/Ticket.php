@@ -27,5 +27,15 @@ class Ticket {
 		$json = $client->getJSONObject("ticket", "get", $attributes);
 		return $json;
 	}
+	public static function pay($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("ticket", "pay", $attributes);
+		return $json;
+	}
+	public static function lastBilling($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("ticket", "lastBilling", $attributes);
+		return $json;
+	}
 }
 ?>
