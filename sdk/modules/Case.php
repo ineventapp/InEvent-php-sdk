@@ -1,7 +1,7 @@
 <?php
 namespace InEvent;
 
-class Case {
+class _Case {
 	public static function edit($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("case", "edit", $attributes);

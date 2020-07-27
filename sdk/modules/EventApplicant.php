@@ -32,5 +32,10 @@ class Applicant {
 		$json = $client->getJSONObject("event.applicant", "approve", $attributes);
 		return $json;
 	}
+	public static function reject($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.applicant", "reject", $attributes);
+		return $json;
+	}
 }
 ?>

@@ -32,5 +32,15 @@ class Form {
 		$json = $client->getJSONObject("form", "respondRegistration", $attributes);
 		return $json;
 	}
+	public static function respondCustom($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("form", "respondCustom", $attributes);
+		return $json;
+	}
+	public static function respondMeeting($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("form", "respondMeeting", $attributes);
+		return $json;
+	}
 }
 ?>

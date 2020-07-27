@@ -12,9 +12,24 @@ class Salesforce {
 		$json = $client->getJSONObject("salesforce", "getCampaigns", $attributes);
 		return $json;
 	}
+	public static function getLeadLists($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "getLeadLists", $attributes);
+		return $json;
+	}
+	public static function getContactLists($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "getContactLists", $attributes);
+		return $json;
+	}
 	public static function getPeople($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("salesforce", "getPeople", $attributes);
+		return $json;
+	}
+	public static function getFields($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "getFields", $attributes);
 		return $json;
 	}
 	public static function importPeople($client, array $get = array(), array $post = array()) {

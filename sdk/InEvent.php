@@ -20,7 +20,7 @@ foreach (scandir(dirname(__FILE__) . '/modules') as $filename) {
 class InEvent {
 
 	/* The oficial api url */
-	const API_BASE_URI = 'https://inevent.us/api/';
+	const API_BASE_URI = 'https://app.inevent.com/api/';
 
 	/* The tokenID */
 	public $tokenID = '';
@@ -35,7 +35,7 @@ class InEvent {
 	public $format = 'json';
 
 	/* Set the userAgent. */
-	public $userAgent = 'InEvent PHP SDK v1.1';
+	public $userAgent = 'InEvent PHP SDK v1.2';
 
 	/**
 	* Setters

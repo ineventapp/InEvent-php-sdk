@@ -18,7 +18,7 @@ $response = InEvent\Person::signIn($client, [
 ]);
 
 // Dumps our response
-var_dump($response['body']);
+var_dump($response["body"]);
 
 // Verifies if code is 200 OK
 if ($response['code'] == 200) {

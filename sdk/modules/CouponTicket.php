@@ -1,20 +1,20 @@
 <?php
-namespace InEvent\List;
+namespace InEvent\Coupon;
 
-class Person {
+class Ticket {
 	public static function bind($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("list.person", "bind", $attributes);
+		$json = $client->getJSONObject("coupon.ticket", "bind", $attributes);
 		return $json;
 	}
 	public static function dismiss($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("list.person", "dismiss", $attributes);
+		$json = $client->getJSONObject("coupon.ticket", "dismiss", $attributes);
 		return $json;
 	}
 	public static function find($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("list.person", "find", $attributes);
+		$json = $client->getJSONObject("coupon.ticket", "find", $attributes);
 		return $json;
 	}
 }

@@ -20,7 +20,9 @@ class Person {
 	public static function signIn($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("person", "signIn", $attributes);
-		$client->token->tokenID = $json["data"][0]["tokenID"];
+		if (isset($json["body"]["data"])  && count($json["body"]["data"]) > 0) {
+			$client->setTokenID($json["body"]["data"][0]["tokenID"]);
+		}
 		return $json;
 	}
 	public static function externalSignIn($client, array $get = array(), array $post = array()) {
@@ -36,6 +38,11 @@ class Person {
 	public static function disableTwoFactor($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("person", "disableTwoFactor", $attributes);
+		return $json;
+	}
+	public static function requestTrial($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "requestTrial", $attributes);
 		return $json;
 	}
 	public static function sendRecovery($client, array $get = array(), array $post = array()) {

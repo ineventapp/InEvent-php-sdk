@@ -12,5 +12,10 @@ class Log {
 		$json = $client->getJSONObject("email.log", "get", $attributes);
 		return $json;
 	}
+	public static function setConversion($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("email.log", "setConversion", $attributes);
+		return $json;
+	}
 }
 ?>

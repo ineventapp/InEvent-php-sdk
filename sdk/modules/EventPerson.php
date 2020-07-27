@@ -32,11 +32,6 @@ class Person {
 		$json = $client->getJSONObject("event.person", "remember", $attributes);
 		return $json;
 	}
-	public static function rsvp($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("event.person", "rsvp", $attributes);
-		return $json;
-	}
 	public static function qrCode($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "qrCode", $attributes);
@@ -50,6 +45,16 @@ class Person {
 	public static function printed($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "printed", $attributes);
+		return $json;
+	}
+	public static function verifyEmail($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "verifyEmail", $attributes);
+		return $json;
+	}
+	public static function requestMagicLink($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "requestMagicLink", $attributes);
 		return $json;
 	}
 	public static function voucher($client, array $get = array(), array $post = array()) {

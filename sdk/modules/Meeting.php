@@ -32,5 +32,15 @@ class Meeting {
 		$json = $client->getJSONObject("meeting", "fill", $attributes);
 		return $json;
 	}
+	public static function removeAll($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting", "removeAll", $attributes);
+		return $json;
+	}
+	public static function stats($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting", "stats", $attributes);
+		return $json;
+	}
 }
 ?>

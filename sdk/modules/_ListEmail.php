@@ -1,5 +1,5 @@
 <?php
-namespace InEvent\List;
+namespace InEvent\_List;
 
 class Email {
 	public static function create($client, array $get = array(), array $post = array()) {
