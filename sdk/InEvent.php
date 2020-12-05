@@ -57,7 +57,18 @@ class InEvent {
 
 		// Encode properties
 	    $getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
-	    $postProperties = (!empty($attributes["POST"])) ? $this->build_http_query($attributes["POST"]) : "";
+		
+		if (!empty($attributes["POST"])) {
+			// Added cURL file method, to convert local files
+			foreach ($attributes["POST"] as $index => $value) {
+
+				if (is_array($value) && $value["type"] == "file") {
+					$attributes["POST"][$index] = new CurlFile($value["value"], "", $value["name"]);
+				}
+			}
+		}
+
+		$postProperties = (!empty($attributes["POST"])) ? $attributes["POST"] : "";
 
 		try {
 			// Curl settings
