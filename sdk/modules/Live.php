@@ -52,6 +52,26 @@ class Live {
 		$json = $client->getJSONObject("live", "startLiveStreaming", $attributes);
 		return $json;
 	}
+	public static function stopLiveStreaming($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "stopLiveStreaming", $attributes);
+		return $json;
+	}
+	public static function updateLiveStreaming($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "updateLiveStreaming", $attributes);
+		return $json;
+	}
+	public static function findTranscriptions($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "findTranscriptions", $attributes);
+		return $json;
+	}
+	public static function removeTranscriptions($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "removeTranscriptions", $attributes);
+		return $json;
+	}
 	public static function analyticsFind($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("live", "analyticsFind", $attributes);

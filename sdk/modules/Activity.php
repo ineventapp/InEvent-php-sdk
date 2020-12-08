@@ -27,6 +27,11 @@ class Activity {
 		$json = $client->getJSONObject("activity", "get", $attributes);
 		return $json;
 	}
+	public static function getDays($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("activity", "getDays", $attributes);
+		return $json;
+	}
 	public static function copy($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("activity", "copy", $attributes);

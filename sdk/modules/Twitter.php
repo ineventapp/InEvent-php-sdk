@@ -6,7 +6,7 @@ class Twitter {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("twitter", "signIn", $attributes);
 		if (isset($json["body"]["data"])  && count($json["body"]["data"]) > 0) {
-				$client->token->tokenID = $json["body"]["data"][0]["tokenID"];
+			$client->setTokenID($json["body"]["data"][0]["tokenID"]);
 		}
 		return $json;
 	}

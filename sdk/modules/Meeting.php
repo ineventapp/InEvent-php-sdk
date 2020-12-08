@@ -27,6 +27,11 @@ class Meeting {
 		$json = $client->getJSONObject("meeting", "get", $attributes);
 		return $json;
 	}
+	public static function getDays($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting", "getDays", $attributes);
+		return $json;
+	}
 	public static function fill($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("meeting", "fill", $attributes);

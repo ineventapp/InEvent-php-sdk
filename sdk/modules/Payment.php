@@ -42,5 +42,10 @@ class Payment {
 		$json = $client->getJSONObject("payment", "rejectRefund", $attributes);
 		return $json;
 	}
+	public static function stats($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("payment", "stats", $attributes);
+		return $json;
+	}
 }
 ?>
