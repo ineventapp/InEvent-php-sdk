@@ -19,8 +19,14 @@ foreach (scandir(dirname(__FILE__) . '/modules') as $filename) {
 */
 class InEvent {
 
-	/* The oficial api url */
+	/* The oficial api american url */
 	const API_BASE_URI = 'https://app.inevent.com/api/';
+
+	/* The oficial api european url */
+	const API_BASE_URI_EUROPE = 'https://app.inevent.uk/api/';
+
+	/* Environments  */
+	const ENVIRONMENTS = ["american", "european"];
 
 	/* The tokenID */
 	public $tokenID = '';
@@ -37,12 +43,21 @@ class InEvent {
 	/* Set the userAgent. */
 	public $userAgent = 'InEvent PHP SDK v1.2';
 
+	/* Set the userAgent. */
+	public $environment = 'american';
+
 	/**
 	* Setters
 	*/
 	public function setTokenID($tokenID) {
-    	$this->tokenID = $tokenID;
-    	return $this;
+		$this->tokenID = $tokenID;
+		return $this;
+	}
+	  
+	public function setEnvironment($environment) {
+		if (!in_array($environment, self::ENVIRONMENTS)) $environment = "american";
+		$this->environment = $environment;
+		return $this;
   	}
 
 	/**
@@ -56,7 +71,7 @@ class InEvent {
 		if (!empty($this->tokenID)) $attributes["GET"]["tokenID"] = $this->tokenID;
 
 		// Encode properties
-	    $getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
+		$getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
 		
 		if (!empty($attributes["POST"])) {
 			// Added cURL file method, to convert local files
@@ -70,6 +85,8 @@ class InEvent {
 
 		$postProperties = (!empty($attributes["POST"])) ? $attributes["POST"] : "";
 
+		$url = ($this->environment == "european") ? self::API_BASE_URI_EUROPE : self::API_BASE_URI;
+
 		try {
 			// Curl settings
 			$ci = curl_init();
@@ -79,40 +96,40 @@ class InEvent {
 			curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
 			curl_setopt($ci, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
-	        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, TRUE);
-	        curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
+			curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, TRUE);
+			curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
 			curl_setopt($ci, CURLOPT_POST, TRUE);
-			curl_setopt($ci, CURLOPT_URL, self::API_BASE_URI . "?" . $getProperties);
+			curl_setopt($ci, CURLOPT_URL, $url . "?" . $getProperties);
 			curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
 
 			if (!empty($postProperties)) {
 				curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
 			}
 
-	        // Display its output
-	        $body = curl_exec($ci);
-	        $code = curl_getinfo($ci, CURLINFO_HTTP_CODE);
-	        $info = curl_getinfo($ci);
+			// Display its output
+			$body = curl_exec($ci);
+			$code = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+			$info = curl_getinfo($ci);
 
-	        // Capture any errors
-		    if ($body === FALSE) {
-		    	throw new Exception(curl_error($ci), curl_errno($ci));
-		    }
+			// Capture any errors
+			if ($body === FALSE) {
+				throw new Exception(curl_error($ci), curl_errno($ci));
+			}
 
-	        curl_close($ci);
+			curl_close($ci);
 
-	    } catch(Exception $e) {
-	        trigger_error(sprintf('Curl failed #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
-	    }
+		} catch(Exception $e) {
+			trigger_error(sprintf('Curl failed #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
+		}
 
-        // Display its output
-        $response = array(
-        	"body" => json_decode($body, true),
-        	"code" => $code,
-        	"info" => $info
-        );
+		// Display its output
+		$response = array(
+			"body" => json_decode($body, true),
+			"code" => $code,
+			"info" => $info
+		);
 
-        return $response;
+		return $response;
 	}
 
 	/**
@@ -133,15 +150,15 @@ class InEvent {
 		$pairs = array();
 		foreach ($params as $parameter => $value) {
 			if (is_array($value)) {
-		    	// If two or more parameters share the same name, they are sorted by their value
-		    	// Ref: Spec: 9.1.1 (1)
-		    	natsort($value);
+				// If two or more parameters share the same name, they are sorted by their value
+				// Ref: Spec: 9.1.1 (1)
+				natsort($value);
 
-		    	foreach ($value as $duplicate_value) {
-		      		$pairs[] = $parameter . '=' . $duplicate_value;
-		    	}
+				foreach ($value as $duplicate_value) {
+			  		$pairs[] = $parameter . '=' . $duplicate_value;
+				}
 		  	} else {
-		       $pairs[] = $parameter . '=' . $value;
+			   $pairs[] = $parameter . '=' . $value;
 			}
 		}
 
@@ -153,17 +170,17 @@ class InEvent {
 	/**
 	* Encode based on RFC 3986
 	*/
-    public function urlencode_rfc3986($input) {
+	public function urlencode_rfc3986($input) {
  		if (is_array($input)) {
-    		return array_map(array($this, 'urlencode_rfc3986'), $input);
+			return array_map(array($this, 'urlencode_rfc3986'), $input);
   		} else if (is_scalar($input)) {
-    		return str_replace(
-      			'+',
-      			' ',
-      			str_replace('%7E', '~', rawurlencode($input))
-    		);
+			return str_replace(
+	  			'+',
+	  			' ',
+	  			str_replace('%7E', '~', rawurlencode($input))
+			);
   		} else {
-    		return '';
+			return '';
   		}
 	}
 
