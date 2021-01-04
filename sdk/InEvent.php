@@ -26,7 +26,11 @@ class InEvent {
 	const API_BASE_URI_EUROPE = 'https://app.inevent.uk/api/';
 
 	/* Environments  */
-	const ENVIRONMENTS = ["american", "european"];
+	const ENVIRONMENTS = [0, 1];
+
+	public static $REGION_NORTH_AMERICA = 0;
+
+	public static $REGION_EUROPE = 1;
 
 	/* The tokenID */
 	public $tokenID = '';
@@ -44,7 +48,7 @@ class InEvent {
 	public $userAgent = 'InEvent PHP SDK v1.2';
 
 	/* Set the userAgent. */
-	public $environment = 'american';
+	public $environment = 0;
 
 	/**
 	* Setters
@@ -54,8 +58,8 @@ class InEvent {
 		return $this;
 	}
 	  
-	public function setEnvironment($environment) {
-		if (!in_array($environment, self::ENVIRONMENTS)) $environment = "american";
+	public function setRegion($environment) {
+		if (!in_array($environment, self::ENVIRONMENTS)) $environment = 0;
 		$this->environment = $environment;
 		return $this;
   	}
@@ -85,7 +89,7 @@ class InEvent {
 
 		$postProperties = (!empty($attributes["POST"])) ? $attributes["POST"] : "";
 
-		$url = ($this->environment == "european") ? self::API_BASE_URI_EUROPE : self::API_BASE_URI;
+		$url = ($this->environment == InEvent::$REGION_EUROPE) ? self::API_BASE_URI_EUROPE : self::API_BASE_URI;
 
 		try {
 			// Curl settings
