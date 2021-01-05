@@ -20,17 +20,14 @@ foreach (scandir(dirname(__FILE__) . '/modules') as $filename) {
 class InEvent {
 
 	/* The oficial api american url */
-	const API_BASE_URI = 'https://app.inevent.com/api/';
+	const API_BASE_URI_NORTH_AMERICA = 'https://app.inevent.com/api/';
 
 	/* The oficial api european url */
 	const API_BASE_URI_EUROPE = 'https://app.inevent.uk/api/';
 
-	/* Environments  */
-	const ENVIRONMENTS = [0, 1];
-
-	public static $REGION_NORTH_AMERICA = 0;
-
-	public static $REGION_EUROPE = 1;
+	/* Regions */
+	const REGION_NORTH_AMERICA = 0;
+	const REGION_EUROPE = 1;
 
 	/* The tokenID */
 	public $tokenID = '';
@@ -48,7 +45,7 @@ class InEvent {
 	public $userAgent = 'InEvent PHP SDK v1.2';
 
 	/* Set the userAgent. */
-	public $environment = 0;
+	public $region = 0;
 
 	/**
 	* Setters
@@ -58,9 +55,9 @@ class InEvent {
 		return $this;
 	}
 	  
-	public function setRegion($environment) {
-		if (!in_array($environment, self::ENVIRONMENTS)) $environment = 0;
-		$this->environment = $environment;
+	public function setRegion($region) {
+		if (!in_array($region, [0, 1])) $region = 0;
+		$this->region = $region;
 		return $this;
   	}
 
@@ -76,20 +73,24 @@ class InEvent {
 
 		// Encode properties
 		$getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
-		
+
+		// Checks if has file
+		$hasFile = false;
+
 		if (!empty($attributes["POST"])) {
 			// Added cURL file method, to convert local files
 			foreach ($attributes["POST"] as $index => $value) {
 
 				if (is_array($value) && $value["type"] == "file") {
 					$attributes["POST"][$index] = new CurlFile($value["value"], "", $value["name"]);
+					$hasFile = true;
 				}
 			}
 		}
 
-		$postProperties = (!empty($attributes["POST"])) ? $attributes["POST"] : "";
+		$postProperties = (!empty($attributes["POST"])) ? ($hasFile ? $attributes["POST"] : $this->build_http_query($attributes["POST"])) : "";
 
-		$url = ($this->environment == InEvent::$REGION_EUROPE) ? self::API_BASE_URI_EUROPE : self::API_BASE_URI;
+		$url = ($this->region == self::REGION_EUROPE) ? self::API_BASE_URI_EUROPE : self::API_BASE_URI_NORTH_AMERICA;
 
 		try {
 			// Curl settings
@@ -104,7 +105,12 @@ class InEvent {
 			curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, 2);
 			curl_setopt($ci, CURLOPT_POST, TRUE);
 			curl_setopt($ci, CURLOPT_URL, $url . "?" . $getProperties);
-			curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+
+			if ($hasFile) {
+				curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-type: multipart/form-data;'));
+			} else {	
+				curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+			}
 
 			if (!empty($postProperties)) {
 				curl_setopt($ci, CURLOPT_POSTFIELDS, $postProperties);
