@@ -10,6 +10,9 @@ require_once('sdk/InEvent.php');
 // Gather our InEvent client
 $client = new InEvent();
 
+// Change the enviroment, (american or european)
+$client->setRegion(InEvent::$REGION_EUROPE);
+
 // Sign In for person
 $response = InEvent\Person::signIn($client, [
 	"username" => "youremail@domain.com"
