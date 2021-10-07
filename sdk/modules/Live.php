@@ -52,6 +52,11 @@ class Live {
 		$json = $client->getJSONObject("live", "startLiveStreaming", $attributes);
 		return $json;
 	}
+	public static function isLiveStreaming($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "isLiveStreaming", $attributes);
+		return $json;
+	}
 	public static function stopLiveStreaming($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("live", "stopLiveStreaming", $attributes);
@@ -70,6 +75,26 @@ class Live {
 	public static function removeTranscriptions($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("live", "removeTranscriptions", $attributes);
+		return $json;
+	}
+	public static function enableMuxLowLatency($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "enableMuxLowLatency", $attributes);
+		return $json;
+	}
+	public static function disableMuxLowLatency($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "disableMuxLowLatency", $attributes);
+		return $json;
+	}
+	public static function enableIvs($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "enableIvs", $attributes);
+		return $json;
+	}
+	public static function disableIvs($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "disableIvs", $attributes);
 		return $json;
 	}
 	public static function analyticsFind($client, array $get = array(), array $post = array()) {

@@ -17,6 +17,11 @@ class Person {
 		$json = $client->getJSONObject("meeting.person", "revoke", $attributes);
 		return $json;
 	}
+	public static function rsvp($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting.person", "rsvp", $attributes);
+		return $json;
+	}
 	public static function dismiss($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("meeting.person", "dismiss", $attributes);
@@ -50,6 +55,11 @@ class Person {
 	public static function withSlot($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("meeting.person", "withSlot", $attributes);
+		return $json;
+	}
+	public static function allRestrictions($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("meeting.person", "allRestrictions", $attributes);
 		return $json;
 	}
 }

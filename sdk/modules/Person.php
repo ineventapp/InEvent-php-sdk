@@ -80,5 +80,10 @@ class Person {
 		$json = $client->getJSONObject("person", "sendBug", $attributes);
 		return $json;
 	}
+	public static function getBug($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "getBug", $attributes);
+		return $json;
+	}
 }
 ?>
