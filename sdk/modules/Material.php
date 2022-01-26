@@ -22,5 +22,10 @@ class Material {
 		$json = $client->getJSONObject("material", "get", $attributes);
 		return $json;
 	}
+	public static function analytics($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("material", "analytics", $attributes);
+		return $json;
+	}
 }
 ?>
