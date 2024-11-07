@@ -17,5 +17,10 @@ class Hubspot {
 		$json = $client->getJSONObject("hubspot", "get", $attributes);
 		return $json;
 	}
+	public static function findProperties($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("hubspot", "findProperties", $attributes);
+		return $json;
+	}
 }
 ?>

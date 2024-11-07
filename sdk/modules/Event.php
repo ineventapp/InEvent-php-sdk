@@ -27,5 +27,20 @@ class Event {
 		$json = $client->getJSONObject("event", "search", $attributes);
 		return $json;
 	}
+	public static function emailDnsStatus($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event", "emailDnsStatus", $attributes);
+		return $json;
+	}
+	public static function aiRequest($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event", "aiRequest", $attributes);
+		return $json;
+	}
+	public static function report($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event", "report", $attributes);
+		return $json;
+	}
 }
 ?>

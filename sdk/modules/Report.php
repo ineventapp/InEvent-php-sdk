@@ -22,5 +22,15 @@ class Report {
 		$json = $client->getJSONObject("report", "find", $attributes);
 		return $json;
 	}
+	public static function get($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("report", "get", $attributes);
+		return $json;
+	}
+	public static function snapshot($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("report", "snapshot", $attributes);
+		return $json;
+	}
 }
 ?>

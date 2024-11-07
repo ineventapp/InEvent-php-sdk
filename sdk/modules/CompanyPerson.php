@@ -22,6 +22,11 @@ class Person {
 		$json = $client->getJSONObject("company.person", "find", $attributes);
 		return $json;
 	}
+	public static function get($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company.person", "get", $attributes);
+		return $json;
+	}
 	public static function sync($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("company.person", "sync", $attributes);

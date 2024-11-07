@@ -37,5 +37,10 @@ class Person {
 		$json = $client->getJSONObject("ticket.person", "dismiss", $attributes);
 		return $json;
 	}
+	public static function transferList($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("ticket.person", "transferList", $attributes);
+		return $json;
+	}
 }
 ?>

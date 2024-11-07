@@ -27,9 +27,19 @@ class Person {
 		$json = $client->getJSONObject("event.person", "get", $attributes);
 		return $json;
 	}
+	public static function getLastEntry($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "getLastEntry", $attributes);
+		return $json;
+	}
 	public static function remember($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "remember", $attributes);
+		return $json;
+	}
+	public static function confirmationEmail($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "confirmationEmail", $attributes);
 		return $json;
 	}
 	public static function qrCode($client, array $get = array(), array $post = array()) {
@@ -47,6 +57,11 @@ class Person {
 		$json = $client->getJSONObject("event.person", "printed", $attributes);
 		return $json;
 	}
+	public static function printedList($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "printedList", $attributes);
+		return $json;
+	}
 	public static function verifyEmail($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "verifyEmail", $attributes);
@@ -55,6 +70,11 @@ class Person {
 	public static function requestMagicLink($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("event.person", "requestMagicLink", $attributes);
+		return $json;
+	}
+	public static function regenerateQrCode($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.person", "regenerateQrCode", $attributes);
 		return $json;
 	}
 	public static function voucher($client, array $get = array(), array $post = array()) {

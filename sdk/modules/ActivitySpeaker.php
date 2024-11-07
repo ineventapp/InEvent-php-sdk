@@ -7,6 +7,11 @@ class Speaker {
 		$json = $client->getJSONObject("activity.speaker", "bind", $attributes);
 		return $json;
 	}
+	public static function operate($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("activity.speaker", "operate", $attributes);
+		return $json;
+	}
 	public static function dismiss($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("activity.speaker", "dismiss", $attributes);

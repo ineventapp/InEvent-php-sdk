@@ -37,5 +37,10 @@ class Feedback {
 		$json = $client->getJSONObject("feedback", "respond", $attributes);
 		return $json;
 	}
+	public static function copy($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("feedback", "copy", $attributes);
+		return $json;
+	}
 }
 ?>

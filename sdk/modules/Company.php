@@ -22,5 +22,10 @@ class Company {
 		$json = $client->getJSONObject("company", "get", $attributes);
 		return $json;
 	}
+	public static function getColors($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("company", "getColors", $attributes);
+		return $json;
+	}
 }
 ?>

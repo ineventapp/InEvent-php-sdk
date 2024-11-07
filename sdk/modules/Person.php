@@ -85,5 +85,15 @@ class Person {
 		$json = $client->getJSONObject("person", "getBug", $attributes);
 		return $json;
 	}
+	public static function sendTroubleshoot($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "sendTroubleshoot", $attributes);
+		return $json;
+	}
+	public static function setPreference($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("person", "setPreference", $attributes);
+		return $json;
+	}
 }
 ?>

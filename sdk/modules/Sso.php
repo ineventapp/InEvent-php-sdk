@@ -7,9 +7,9 @@ class Sso {
 		$json = $client->getJSONObject("sso", "edit", $attributes);
 		return $json;
 	}
-	public static function get($client, array $get = array(), array $post = array()) {
+	public static function find($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("sso", "get", $attributes);
+		$json = $client->getJSONObject("sso", "find", $attributes);
 		return $json;
 	}
 	public static function linkAccount($client, array $get = array(), array $post = array()) {

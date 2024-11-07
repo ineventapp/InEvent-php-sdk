@@ -7,6 +7,11 @@ class Person {
 		$json = $client->getJSONObject("sponsor.person", "bind", $attributes);
 		return $json;
 	}
+	public static function operate($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("sponsor.person", "operate", $attributes);
+		return $json;
+	}
 	public static function dismiss($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("sponsor.person", "dismiss", $attributes);

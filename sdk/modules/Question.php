@@ -37,5 +37,10 @@ class Question {
 		$json = $client->getJSONObject("question", "downvote", $attributes);
 		return $json;
 	}
+	public static function reply($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("question", "reply", $attributes);
+		return $json;
+	}
 }
 ?>

@@ -37,5 +37,15 @@ class Quiz {
 		$json = $client->getJSONObject("quiz", "respond", $attributes);
 		return $json;
 	}
+	public static function removeAnswers($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("quiz", "removeAnswers", $attributes);
+		return $json;
+	}
+	public static function copy($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("quiz", "copy", $attributes);
+		return $json;
+	}
 }
 ?>

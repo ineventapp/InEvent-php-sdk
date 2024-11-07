@@ -37,5 +37,30 @@ class Link {
 		$json = $client->getJSONObject("marketo.link", "sync", $attributes);
 		return $json;
 	}
+	public static function syncTokens($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("marketo.link", "syncTokens", $attributes);
+		return $json;
+	}
+	public static function syncStatuses($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("marketo.link", "syncStatuses", $attributes);
+		return $json;
+	}
+	public static function setActivitySync($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("marketo.link", "setActivitySync", $attributes);
+		return $json;
+	}
+	public static function setActivitySyncForActivity($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("marketo.link", "setActivitySyncForActivity", $attributes);
+		return $json;
+	}
+	public static function syncActivity($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("marketo.link", "syncActivity", $attributes);
+		return $json;
+	}
 }
 ?>

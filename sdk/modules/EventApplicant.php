@@ -37,5 +37,10 @@ class Applicant {
 		$json = $client->getJSONObject("event.applicant", "reject", $attributes);
 		return $json;
 	}
+	public static function undoReject($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("event.applicant", "undoReject", $attributes);
+		return $json;
+	}
 }
 ?>

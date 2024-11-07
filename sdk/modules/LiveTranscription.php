@@ -22,5 +22,30 @@ class Transcription {
 		$json = $client->getJSONObject("live.transcription", "clear", $attributes);
 		return $json;
 	}
+	public static function start($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live.transcription", "start", $attributes);
+		return $json;
+	}
+	public static function status($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live.transcription", "status", $attributes);
+		return $json;
+	}
+	public static function stop($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live.transcription", "stop", $attributes);
+		return $json;
+	}
+	public static function realtime($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live.transcription", "realtime", $attributes);
+		return $json;
+	}
+	public static function translate($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live.transcription", "translate", $attributes);
+		return $json;
+	}
 }
 ?>

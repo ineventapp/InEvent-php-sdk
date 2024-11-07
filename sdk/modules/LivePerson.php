@@ -7,9 +7,9 @@ class Person {
 		$json = $client->getJSONObject("live.person", "find", $attributes);
 		return $json;
 	}
-	public static function forceUnpublish($client, array $get = array(), array $post = array()) {
+	public static function get($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("live.person", "forceUnpublish", $attributes);
+		$json = $client->getJSONObject("live.person", "get", $attributes);
 		return $json;
 	}
 	public static function keepAlive($client, array $get = array(), array $post = array()) {

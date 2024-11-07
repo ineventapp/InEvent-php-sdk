@@ -37,5 +37,20 @@ class Translation {
 		$json = $client->getJSONObject("translation", "enabled", $attributes);
 		return $json;
 	}
+	public static function translateMissing($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("translation", "translateMissing", $attributes);
+		return $json;
+	}
+	public static function findTranslations($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("translation", "findTranslations", $attributes);
+		return $json;
+	}
+	public static function analytics($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("translation", "analytics", $attributes);
+		return $json;
+	}
 }
 ?>

@@ -47,9 +47,34 @@ class Live {
 		$json = $client->getJSONObject("live", "updateRecording", $attributes);
 		return $json;
 	}
+	public static function updateRecordingVideoConferencing($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "updateRecordingVideoConferencing", $attributes);
+		return $json;
+	}
+	public static function createSimulcast($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "createSimulcast", $attributes);
+		return $json;
+	}
+	public static function findSimulcasts($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "findSimulcasts", $attributes);
+		return $json;
+	}
+	public static function removeSimulcast($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "removeSimulcast", $attributes);
+		return $json;
+	}
 	public static function startLiveStreaming($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("live", "startLiveStreaming", $attributes);
+		return $json;
+	}
+	public static function reloadLiveStreaming($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "reloadLiveStreaming", $attributes);
 		return $json;
 	}
 	public static function isLiveStreaming($client, array $get = array(), array $post = array()) {
@@ -105,6 +130,46 @@ class Live {
 	public static function analyticsGet($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("live", "analyticsGet", $attributes);
+		return $json;
+	}
+	public static function checkOnDemandReady($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "checkOnDemandReady", $attributes);
+		return $json;
+	}
+	public static function clearAnalytics($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "clearAnalytics", $attributes);
+		return $json;
+	}
+	public static function sendSipTTS($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "sendSipTTS", $attributes);
+		return $json;
+	}
+	public static function closeSip($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "closeSip", $attributes);
+		return $json;
+	}
+	public static function dialOutSip($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "dialOutSip", $attributes);
+		return $json;
+	}
+	public static function closeOpentokConnection($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "closeOpentokConnection", $attributes);
+		return $json;
+	}
+	public static function enableCC($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "enableCC", $attributes);
+		return $json;
+	}
+	public static function disableCC($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("live", "disableCC", $attributes);
 		return $json;
 	}
 }

@@ -27,5 +27,15 @@ class Flight {
 		$json = $client->getJSONObject("flight", "stats", $attributes);
 		return $json;
 	}
+	public static function lookup($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("flight", "lookup", $attributes);
+		return $json;
+	}
+	public static function importGds($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("flight", "importGds", $attributes);
+		return $json;
+	}
 }
 ?>

@@ -27,5 +27,10 @@ class Tag {
 		$json = $client->getJSONObject("tag", "get", $attributes);
 		return $json;
 	}
+	public static function getCategories($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("tag", "getCategories", $attributes);
+		return $json;
+	}
 }
 ?>

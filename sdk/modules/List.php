@@ -37,5 +37,10 @@ class _List {
 		$json = $client->getJSONObject("list", "import", $attributes);
 		return $json;
 	}
+	public static function resync($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("list", "resync", $attributes);
+		return $json;
+	}
 }
 ?>

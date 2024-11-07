@@ -42,9 +42,19 @@ class Payment {
 		$json = $client->getJSONObject("payment", "rejectRefund", $attributes);
 		return $json;
 	}
+	public static function resendReceipt($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("payment", "resendReceipt", $attributes);
+		return $json;
+	}
 	public static function stats($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("payment", "stats", $attributes);
+		return $json;
+	}
+	public static function downloadInvoices($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("payment", "downloadInvoices", $attributes);
 		return $json;
 	}
 }

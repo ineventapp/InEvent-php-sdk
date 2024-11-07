@@ -12,6 +12,16 @@ class Salesforce {
 		$json = $client->getJSONObject("salesforce", "getCampaigns", $attributes);
 		return $json;
 	}
+	public static function describeCustomObject($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "describeCustomObject", $attributes);
+		return $json;
+	}
+	public static function getCustomObjects($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "getCustomObjects", $attributes);
+		return $json;
+	}
 	public static function getLeadLists($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("salesforce", "getLeadLists", $attributes);
@@ -50,6 +60,11 @@ class Salesforce {
 	public static function edit($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("salesforce", "edit", $attributes);
+		return $json;
+	}
+	public static function resetConfiguration($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("salesforce", "resetConfiguration", $attributes);
 		return $json;
 	}
 }

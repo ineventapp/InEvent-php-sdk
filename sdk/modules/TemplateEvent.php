@@ -27,5 +27,10 @@ class Event {
 		$json = $client->getJSONObject("template.event", "get", $attributes);
 		return $json;
 	}
+	public static function copy($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("template.event", "copy", $attributes);
+		return $json;
+	}
 }
 ?>

@@ -2,11 +2,6 @@
 namespace InEvent\Company;
 
 class Push {
-	public static function bind($client, array $get = array(), array $post = array()) {
-		$attributes = array("GET" => $get, "POST" => $post);
-		$json = $client->getJSONObject("company.push", "bind", $attributes);
-		return $json;
-	}
 	public static function edit($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("company.push", "edit", $attributes);

@@ -32,6 +32,11 @@ class Email {
 		$json = $client->getJSONObject("list.email", "send", $attributes);
 		return $json;
 	}
+	public static function sendEmailsNotSent($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("list.email", "sendEmailsNotSent", $attributes);
+		return $json;
+	}
 	public static function copy($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("list.email", "copy", $attributes);
@@ -45,6 +50,11 @@ class Email {
 	public static function stats($client, array $get = array(), array $post = array()) {
 		$attributes = array("GET" => $get, "POST" => $post);
 		$json = $client->getJSONObject("list.email", "stats", $attributes);
+		return $json;
+	}
+	public static function emailsNotSent($client, array $get = array(), array $post = array()) {
+		$attributes = array("GET" => $get, "POST" => $post);
+		$json = $client->getJSONObject("list.email", "emailsNotSent", $attributes);
 		return $json;
 	}
 }
