@@ -20,10 +20,10 @@ foreach (scandir(dirname(__FILE__) . '/modules') as $filename) {
 class InEvent {
 
 	/* The oficial api american url */
-	const API_BASE_URI_NORTH_AMERICA = 'https://app.inevent.com/api/';
+	const API_BASE_URI_NORTH_AMERICA = 'https://api.inevent.com/';
 
 	/* The oficial api european url */
-	const API_BASE_URI_EUROPE = 'https://app.inevent.uk/api/';
+	const API_BASE_URI_EUROPE = 'https://api.inevent.uk/';
 
 	/* Regions */
 	const REGION_NORTH_AMERICA = 0;
@@ -42,7 +42,7 @@ class InEvent {
 	public $format = 'json';
 
 	/* Set the userAgent. */
-	public $userAgent = 'InEvent PHP SDK v1.2';
+	public $userAgent = 'InEvent PHP SDK v1.3';
 
 	/* Set the userAgent. */
 	public $region = 0;
@@ -69,7 +69,6 @@ class InEvent {
 	public function getJSONObject($namespace, $method, $attributes = array()) {
 		// Add remaining properties
 		$attributes["GET"]["action"] = $namespace . "." . $method;
-		if (!empty($this->tokenID)) $attributes["GET"]["tokenID"] = $this->tokenID;
 
 		// Encode properties
 		$getProperties = (!empty($attributes["GET"])) ? $this->build_http_query($attributes["GET"]) : "";
@@ -106,10 +105,20 @@ class InEvent {
 			curl_setopt($ci, CURLOPT_POST, TRUE);
 			curl_setopt($ci, CURLOPT_URL, $url . "?" . $getProperties);
 
+			$headers = array();
+
 			if ($hasFile) {
-				curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-type: multipart/form-data;'));
+				$headers[] = 'Content-type: multipart/form-data;';
 			} else {	
-				curl_setopt($ci, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+				$headers[] = 'Content-Type: application/x-www-form-urlencoded';
+			}
+
+			if (!empty($this->tokenID)) {
+				$headers[] = 'Authorization: Bearer ' . $this->tokenID;
+			}
+
+			if (!empty($headers)) {
+				curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
 			}
 
 			if (!empty($postProperties)) {
